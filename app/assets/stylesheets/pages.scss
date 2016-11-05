@@ -1,3 +1,25 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  text-align: center;
+}
+
+.carousel{
+  .carousel-inner {
+    .item {
+      height: 700px;
+      img {
+        height: 700px;
+        display: block;
+        margin: auto;
+      }
+      .container-fluid {
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 300px;
+      }
+    }
+  }
+}
