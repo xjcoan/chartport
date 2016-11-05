@@ -1,0 +1,20 @@
+<% if @patients.any? %>
+
+  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
+  <% @patients.each do |patient| %>
+
+  <p>
+    <%= link_to patient.name, patient %>
+  </p>
+
+
+  <% end %>
+
+<% else %>
+
+<p>No patients could be found with the search "<%= params[:search] %>".</p>
+<% end %>

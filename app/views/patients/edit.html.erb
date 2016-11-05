@@ -1,0 +1,46 @@
+<%= form_for :patient, url: patient_path(@patient), method: :patch do |f| %>
+
+<div class="jumbotron">
+  <h2>Edit Patient Record</h2>
+</div>
+
+<div class="container-fluid">
+  <div class="page-header">
+    <h3>Patient Name:</h3>
+  </div>
+  <%= f.text_field :name %>
+</div>
+
+<div class="container-fluid">
+  <div class="page-header">
+    <h3>Patient Date Of Birth:</h3>
+  </div>
+  <%= f.text_field :date_of_birth, :class => 'datepicker' %>
+</div>
+
+<div class="container-fluid">
+  <div class="page-header">
+    <h3>Patient Phone Number:</h3>
+  </div>
+  <%= f.text_field :phone_number %>
+</div>
+
+<div class="container-fluid">
+  <div class="page-header">
+    <h3>Medical History:</h3>
+  </div>
+  <%= f.text_area :medical_history %>
+</div>
+
+<div class="container-fluid">
+  <div class="page-header">
+    <h3>List of Medications</h3>
+  </div>
+  <%= f.text_area :medication %>
+</div>
+<br />
+
+<%= f.submit "Update Patient Record" %>
+
+
+<% end %>

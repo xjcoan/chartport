@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <h1><%= @patient.name %></h1>
+  <%= link_to "Edit Patient Info", edit_patient_path(@patient) %>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="page-header">
+        <h4>Patient DOB:</h4>
+      </div>
+      <p><%= @patient.date_of_birth %></p>
+    </div>
+    <div class="col-sm-6">
+      <div class="page-header">
+        <h4>Patient Phone Number:</h4>
+      </div>
+      <p><%= @patient.phone_number %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <h4>Medical History:</h4>
+  <p>
+    <%= @patient.medical_history %>
+  </p>
+</div>
+
+<br />
+<hr />
+<br />
+
+<div class="container-fluid">
+  <h4>Medications:</h4>
+  <p>
+    <%= @patient.medication %>
+  </p>
+</div>

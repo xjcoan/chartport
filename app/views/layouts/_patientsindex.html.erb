@@ -1,0 +1,17 @@
+<% if @patients.any? %>
+
+  <button><%= link_to "Search Database", patients_path %></button>
+
+  <% @patients.reverse_each do |patient| %>
+
+  <p>
+    <%= link_to patient.name, patient %>
+  </p>
+
+  <% end %>
+
+<% else %>
+
+<p>No Patients yet.</p>
+
+<% end %>

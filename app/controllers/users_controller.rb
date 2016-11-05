@@ -14,7 +14,14 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
     require_user
+    @patients = Patient.all
+    if params[:search]
+      @satients = Patient.search(params[:search]).order("created_at DESC")
+    else
+      @patients = Patient.all.order("created_at DESC")
+    end
   end
 
 
