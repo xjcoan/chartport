@@ -6,12 +6,12 @@
   <div class="page-header">
     <h1>Enter New Patient</h1>
   </div>
-  <button><%= link_to "New Patient Entry", new_patient_path %></button>
+  <button class="btn btn-default"><%= link_to "New Patient Entry", new_patient_path %> <span class="glyphicon glyphicon-pencil"></span></button>
 </div>
 
 <div class="container-fluid">
   <div class="page-header">
-    <h1>Patient Directory</h1>
+    <h1>Your Patient Directory</h1>
   </div>
   <%= render 'layouts/patientsindex' %>
 </div>

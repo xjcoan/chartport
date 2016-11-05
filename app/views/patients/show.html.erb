@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h1><%= @patient.name %></h1>
-  <%= link_to "Edit Patient Info", edit_patient_path(@patient) %>
+  <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"</button>
 </div>
 
 <div class="container-fluid">

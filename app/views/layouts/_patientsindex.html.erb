@@ -1,8 +1,10 @@
 <% if @patients.any? %>
 
-  <button><%= link_to "Search Database", patients_path %></button>
+<%= will_paginate @patients %>
 
-  <% @patients.reverse_each do |patient| %>
+  <button class="btn btn-default"><%= link_to "Search Database", patients_path %> <span class="glyphicon glyphicon-list"></span></button>
+
+  <% @patients.where(updated_at: (Time.now - 24.hours)..Time.now).each do |patient| %>
 
   <p>
     <%= link_to patient.name, patient %>

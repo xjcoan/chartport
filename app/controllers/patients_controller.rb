@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
 
   def new
+    @page_title = "Add Patient Record"
     @patient = Patient.new
   end
 
@@ -15,6 +16,7 @@ class PatientsController < ApplicationController
   end
 
   def edit
+    @page_title = "Edit Patient"
     if Patient.exists?(params[:id])
       @patient = Patient.find(params[:id])
     end
@@ -31,14 +33,36 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
+    @page_title = @patient.name + " record"
+
+    respond_to do | f |
+      f.html {
+        # do stuff to populate your html view
+        # maybe nothing at all because @source is set
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @patients
+      }
+    end
   end
 
   def index
-    @patients = Patient.all
+    @page_title = "Patients Index"
+    @patients = current_user.patients.all.paginate(:page => 1, :per_page => 10)
     if params[:search]
-      @patients = Patient.search(params[:search]).order("created_at DESC")
+      @patients = current_user.patients.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
     else
       @patients = Patient.all.order("created_at DESC")
+    end
+
+    respond_to do | f |
+      f.html {
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @patients
+      }
     end
   end
 

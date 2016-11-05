@@ -14,4 +14,11 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
   get 'dashboard' => 'users#dashboard'
+
+  get 'users/:id/export' => 'users#exportjson'
+
+  get 'patient/:patient/export' => 'users#exportpatient'
+
+  get 'patient/:patient/import' => 'users#importpatient'
+  post 'patient/:patient/import' => 'users#importpatient'
 end

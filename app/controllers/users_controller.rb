@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.xml { render xml: @people }
+    end
   end
 
   def create
@@ -15,15 +21,57 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    @page_title = @user.name + "\'s Dashboard"
     require_user
-    @patients = Patient.all
-    if params[:search]
-      @satients = Patient.search(params[:search]).order("created_at DESC")
-    else
-      @patients = Patient.all.order("created_at DESC")
+    @patients = @user.patients.all.paginate(:page => params[:page])
+  end
+
+
+  def exportjson
+    @user = User.find(params[:id])
+    @patients = @user.patients.all
+
+    respond_to do | f |
+      f.html {
+        if (@current_user != @user)
+          redirect_to '/'
+        else
+          redirect_to 'dashboard'
+        end
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @user.patients.all
+      }
     end
   end
 
+  def exportpatient
+    @user = User.find(params[:user])
+    @patient = @user.patients.find(params[:patient])
+
+
+    respond_to do | f |
+      f.html {
+        if (@current_user != @user)
+          redirect_to '/'
+        else
+          redirect_to 'dashboard'
+        end
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @patient
+      }
+    end
+  end
+
+  def importpatient
+    @user = current_user
+
+    Patient.update(params[:patient], :user_id => @user.id)
+
+  end
 
 
   private

@@ -2,7 +2,7 @@
 
   <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
   <% end %>
 
   <% @patients.each do |patient| %>
