@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_email(params[:session][:email])
-    if @user && @user.authenticate(params[:session][:email])
-      session[:user_id] = @user_id
-      redirect_to '/'
+    if @user && @user.authenticate(params[:session][:password])
+      session[:user_id] = @user.id
+      redirect_to dashboard_path
     else
-      render 'new'
+      redirect_to '/'
     end
   end
 
