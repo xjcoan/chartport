@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h1>New Patient Entry Form</h1>
   </div>
@@ -18,29 +18,39 @@
     </div>
   <% end %>
 
+  <div class="page-header">
+    <h3><%= f.label "Patient Name" %></h3>
+  </div>
   <p>
-    <%= f.label "Patient Name" %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'textfield' %>
   </p>
 
+  <div class="page-header">
+    <h3><%= f.label "Date of Birth" %></h3>
+  </div>
   <p>
-    <%= f.label "Date of Birth" %><br />
-    <%= f.text_field :date_of_birth, :class => 'datepicker' %>
+    <%= f.text_field :date_of_birth, :class => 'datepicker textfield' %>
   </p>
 
+  <div class="page-header">
+    <h3><%= f.label "Phone Number" %></h3>
+  </div>
   <p>
-    <%= f.label "Phone Number" %><br />
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number, :class => 'textfield' %>
   </p>
 
+  <div class="page-header">
+    <h3><%= f.label "Medical History Notes" %></h3>
+  </div>
   <p>
-    <%= f.label "Medical History Notes" %><br />
-    <%= f.text_area :medical_history %>
+    <%= f.text_area :medical_history, :class => 'textbox'%>
   </p>
 
+  <div class="page-header">
+    <h3><%= f.label "Medication" %></h3>
+  </div>
   <p>
-    <%= f.label "Medication" %><br />
-    <%= f.text_area :medication %>
+    <%= f.text_area :medication, :class => 'textbox' %>
   </p>
 
   <%= f.submit "Submit Patient" %>

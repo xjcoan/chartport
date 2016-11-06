@@ -1,9 +1,12 @@
-<div class="jumbotron">
-  <h1><%= @patient.name %></h1>
-  <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"</button>
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @patient.name %></h1>
+    <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"</button>
+  </div>
 </div>
 
-<div class="container-fluid">
+
+<div class="container">
   <div class="row">
     <div class="col-sm-6">
       <div class="page-header">
@@ -20,19 +23,20 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <h4>Medical History:</h4>
+<div class="container">
+  <div class="page-header">
+      <h4>Medical History:</h4>
+  </div>
   <p>
     <%= @patient.medical_history %>
   </p>
+
 </div>
 
-<br />
-<hr />
-<br />
-
-<div class="container-fluid">
-  <h4>Medications:</h4>
+<div class="container">
+  <div class="page-header">
+    <h4>Medications:</h4>
+  </div>
   <p>
     <%= @patient.medication %>
   </p>

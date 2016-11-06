@@ -1,42 +1,44 @@
 <%= form_for :patient, url: patient_path(@patient), method: :patch do |f| %>
 
-<div class="jumbotron">
-  <h2>Edit Patient Record</h2>
+<div class="container">
+  <div class="jumbotron">
+    <h2>Edit Patient Record</h2>
+  </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h3>Patient Name:</h3>
   </div>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :class => 'textfield' %>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h3>Patient Date Of Birth:</h3>
   </div>
-  <%= f.text_field :date_of_birth, :class => 'datepicker' %>
+  <%= f.text_field :date_of_birth, :class => 'datepicker textfield' %>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h3>Patient Phone Number:</h3>
   </div>
-  <%= f.text_field :phone_number %>
+  <%= f.text_field :phone_number, :class => 'textfield' %>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h3>Medical History:</h3>
   </div>
-  <%= f.text_area :medical_history %>
+  <%= f.text_area :medical_history, :class => 'textbox' %>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h3>List of Medications</h3>
   </div>
-  <%= f.text_area :medication %>
+  <%= f.text_area :medication, :class => 'textbox' %>
 </div>
 <br />
 

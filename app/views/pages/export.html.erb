@@ -1,25 +1,27 @@
-<div class="jumbotron">
-  <h1>JSON Patient Record Export</h1>
-</div>
-
-<div class="container-fluid">
-  <div class="page-header">
-    <h2>Export either singular or bulk patient records.</h2>
+<div class="container">
+  <div class="jumbotron">
+    <h1>JSON Patient Record Export</h1>
   </div>
-  <p>
-    This service allows for export of patient records in the form of a JSON file.
-    Currently, you can export either single patients or all patients tied to your user account.
-  </p>
 
-  <p>
-    In order to perform a single record export, simply navigate to `/patients/:patient_id/export.json`,
-    and you will have access to the json of that patient's records. This will be
-    available both raw in the browser and via AJAX.
-  </p>
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Export either singular or bulk patient records.</h2>
+    </div>
+    <p>
+      This service allows for export of patient records in the form of a JSON file.
+      Currently, you can export either single patients or all patients tied to your user account.
+    </p>
 
-  <p>
-    For a bulk, whole account export, navigate to `/user/:user_id/export.json`.
-    Similarly to single record export, the JSON record is available both raw and
-    via AJAX.  Both JSON files follow the same structure.
-  </p>
+    <p>
+      In order to perform a single record export, simply navigate to `/patients/:patient_id/export.json`,
+      and you will have access to the json of that patient's records. This will be
+      available both raw in the browser and via AJAX.
+    </p>
+
+    <p>
+      For a bulk, whole account export, navigate to `/user/:user_id/export.json`.
+      Similarly to single record export, the JSON record is available both raw and
+      via AJAX.  Both JSON files follow the same structure.
+    </p>
+  </div>
 </div>

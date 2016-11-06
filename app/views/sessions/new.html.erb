@@ -1,7 +1,22 @@
-<h1>Login</h1>
+<div class="container">
+  <div class="page-header">
+    <h1>Login</h1>
+  </div>
+</div>
+
 
 <%= form_for(:session, url: login_path) do |f| %>
-  <%= f.email_field :email, :placeholder => "Email" %><br />
-  <%= f.password_field :password, :placeholder => "Password" %><br />
-  <%= f.submit "Log In" %>
+  <div class="container">
+    <p>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, :placeholder => "Email" %>
+    </p>
+
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, :placeholder => "Password" %><br />
+    </p>
+
+    <%= f.submit "Log In" %>
+  </div>
 <% end %>

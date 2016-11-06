@@ -1,15 +1,17 @@
-<div class="jumbotron">
-  <h1><%= current_user.name %>'s Dashboard</h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= current_user.name %>'s Dashboard</h1>
+  </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h1>Enter New Patient</h1>
   </div>
   <button class="btn btn-default"><%= link_to "New Patient Entry", new_patient_path %> <span class="glyphicon glyphicon-pencil"></span></button>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="page-header">
     <h1>Your Patient Directory</h1>
   </div>

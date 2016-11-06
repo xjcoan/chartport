@@ -16,3 +16,17 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .textbox {
+   text-align: center;
+   width: 99%;
+   height: 80px;
+   resize: none;
+ }
+
+ .textfield {
+   text-align: center;
+   width: 99%;
+   height: 30px;
+   resize: none;
+ }
