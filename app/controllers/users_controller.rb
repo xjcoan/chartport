@@ -62,8 +62,19 @@ class UsersController < ApplicationController
   def importpatient
     @user = current_user
 
-    Patient.update(params[:patient], :user_id => @user.id)
+    @patient = Patient.find(params[:id])
 
+    @patient.update(:user_id => @user.id)
+  end
+
+  def importsearch
+    @page_title = "Patients Index"
+    @patients = Patient.all
+    if params[:search]
+      @patients = Patient.all.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+    else
+      @patients = Patient.all.order("created_at DESC")
+    end
   end
 
 

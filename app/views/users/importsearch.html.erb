@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>Import Medical Records</h2>
+  </div>
+</div>
+
+<div class="container">
+  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+  <% end %>
+</div>
+
+<div class="container">
+  <h3>Results:</h3>
+</div>
+
+<% @patients.each do |patient| %>
+
+<div class="container">
+  <p>
+    <%= link_to patient.name, patient %>
+  </p>
+</div>
+
+<% end %>
