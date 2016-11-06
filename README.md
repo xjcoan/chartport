@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#xcoan/medical-api
 
-Things you may want to cover:
+MedLog-API service
 
-* Ruby version
+This is a project developed in Ruby on Rails 5 for ArchHacks 2016.
 
-* System dependencies
+The concept of MedLog is for healthcare professionals to have easy access to patient records.
 
-* Configuration
+The records can be easily updated and maintained.  They are also easily exported for potential use
+in in-house creations of hospital IT departments, or to transfer from one medical database to another.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Programmed by X Coan
