@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   get 'users/:id/export' => 'users#exportjson'
 
-  get 'patient/:patient/export' => 'users#exportpatient'
+  get 'patients/:id/export' => 'users#exportpatient'
 
-  get 'patient/:patient/import' => 'users#importpatient'
-  post 'patient/:patient/import' => 'users#importpatient'
+  get 'patient/:id/import' => 'users#importpatient'
+  post 'patient/:id/import' => 'users#importpatient'
 end

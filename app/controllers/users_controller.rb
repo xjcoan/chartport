@@ -41,8 +41,7 @@ class UsersController < ApplicationController
   end
 
   def exportpatient
-    @user = User.find(params[:user])
-    @patient = @user.patients.find(params[:patient])
+    @patient = Patient.find(params[:id])
 
 
     respond_to do | f |
