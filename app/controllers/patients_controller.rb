@@ -53,7 +53,7 @@ class PatientsController < ApplicationController
     if params[:search]
       @patients = current_user.patients.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
     else
-      @patients = Patient.all.order("created_at DESC")
+      @patients = current_user.patients.all.order("created_at DESC")
     end
 
     respond_to do | f |

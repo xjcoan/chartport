@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'users#dashboard'
 
+  get 'export' => 'pages#export'
+
+  get 'import' => 'pages#import'
+
   get 'users/:id/export' => 'users#exportjson'
 
   get 'patient/:patient/export' => 'users#exportpatient'

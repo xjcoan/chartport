@@ -22,4 +22,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def export
+    @page_title = "Export API"
+  end
+
+  def import
+    @page_title = "Import API"
+  end
 end
