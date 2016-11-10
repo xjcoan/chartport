@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      render 'new'
+      redirect_to controller: 'pages', action: 'errorpage'
     end
   end
 

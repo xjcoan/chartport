@@ -4,6 +4,19 @@
   </div>
 </div>
 
+<div class="container">
+    <% if @user.errors.any? %>
+      <div class="page-header">
+        <h2><%= pluralize(@user.errors.count, "error") %></h2>
+      </div>
+      <% @user.errors.full_messages.each do |msg| %>
+        <p>
+          <%= msg %>
+        </p>
+      <% end %>
+  <% end %>
+</div>
+
 
 <div class="container">
   <%= form_for @user do |f| %>

@@ -3,7 +3,7 @@
     <h1><%= @patient.name %></h1>
     <% if @patient.user_id == current_user.id %>
       <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"></span></button>
-      <button><%= link_to 'Expot JSON', controller: 'users', action: 'exportpatient', id: @patient.id, format: 'json' %></button>
+      <button><%= link_to 'Export JSON', controller: 'users', action: 'exportpatient', id: @patient.id, format: 'json' %></button>
     <% end %>
     <% if @patient.user_id != current_user.id %>
       <%= button_to "Import Patient", :controller => 'users', :action => "importpatient" %>

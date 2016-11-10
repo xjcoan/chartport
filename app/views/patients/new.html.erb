@@ -10,11 +10,9 @@
       <h2>
         <%= pluralize(@patient.errors.count, "error") %>
       </h2>
-      <ul>
         <% @patient.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <p><%= msg %></p>
         <% end %>
-      </ul>
     </div>
   <% end %>
 
