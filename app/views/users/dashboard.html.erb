@@ -1,5 +1,7 @@
 <div class="container-fluid">
   <div class="row">
+
+    <!-- Lefthand Column -->
     <div class="col-sm-2">
       <div class="page-header">
         <h1>Import Patients</h1>
@@ -9,22 +11,31 @@
       </p>
     </div>
 
-    <div class="cotainer">
-      <div class="col-sm-8">
-          <div class="jumbotron">
-            <h1><%= current_user.name %>'s Dashboard</h1>
-        </div>
-
-        <div class="page-header">
-          <h1>Enter New Patient</h1>
-        </div>
-        <button class="btn btn-default"><%= link_to "New Patient Entry", new_patient_path %> <span class="glyphicon glyphicon-pencil"></span></button>
-
-        <div class="page-header">
-          <h1>Your Patient Directory</h1>
-        </div>
-        <%= render 'layouts/patientsindex' %>
+    <!-- Center Column -->
+    <div class="col-sm-8">
+      <div class="jumbotron">
+        <h1><%= current_user.name %>'s Dashboard</h1>
       </div>
+      <div class="page-header">
+        <h1>Enter New Patient</h1>
+      </div>
+      <button class="btn btn-default"><%= link_to "New Patient Entry", new_patient_path %> <span class="glyphicon glyphicon-pencil"></span></button>
+
+      <div class="page-header">
+        <h1>Your Patient Directory</h1>
+      </div>
+      <%= render 'layouts/patientsindex' %>
     </div>
+
+    <!-- Righthand Column -->
+    <div class="col-sm-2">
+      <div class="page-header">
+        <h2>Export All Patients</h2>
+      </div>
+      <p>
+        <%= link_to "JSON Export", controller: 'users', action: 'exportjson', id: @current_user.id, format: 'json' %>
+      </p>
+    </div>
+
   </div>
 </div>

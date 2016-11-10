@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   post 'patient/:id/import' => 'users#importpatient'
 
   get 'importui' => 'users#importsearch'
+
+  get ':invalid' => 'pages#errorpage'
 end

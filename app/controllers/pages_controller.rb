@@ -21,4 +21,8 @@ class PagesController < ApplicationController
       format.html
     end
   end
+
+  def errorpage
+    @page_title = "Invalid Page"
+  end
 end
