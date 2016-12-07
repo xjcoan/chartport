@@ -21,12 +21,5 @@ Migrate the database: `bundle exec rake db:migrate`.
 Finally, to run over localhost, run `rails server`.
 
 
-### Can I use/remix/modify this?
-Sure! Feel free to fork the repository and modify or use it. Just give credit where credit is due 😀
-
-#### Disclaimer:
-This code is "hackathon code" - it is extremely far from perfect and otherwise riddled with bugs.
-
-
 #### Programmed by X Coan
 [Github](http://github.com/xcoan)
