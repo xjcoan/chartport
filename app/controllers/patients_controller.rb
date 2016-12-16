@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_filter :require_user
-  
+
   def new
     @page_title = "Add Patient Record"
     @patient = Patient.new
@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
     @patient = current_user.patients.new(patient_params)
 
     if @patient.save
-      redirect_to dashboard_path
+      redirect_to patient_path(@patient)
     else
       render 'new'
     end
@@ -26,7 +26,7 @@ class PatientsController < ApplicationController
   def update
     @patient = Patient.find(params[:id])
     if @patient.update(patient_params)
-      redirect_to dashboard_path
+      redirect_to patient_path(@patient)
     else
       render 'edit'
     end

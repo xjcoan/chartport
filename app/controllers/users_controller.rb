@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 
   def importsearch
     @page_title = "Patients Index"
-    @patients = Patient.all
+    @patients = Patient.where.not(:user_id => current_user)
     if params[:search]
       @patients = Patient.all.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
     else
