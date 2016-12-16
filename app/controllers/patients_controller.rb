@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
-
+  before_filter :require_user
+  
   def new
     @page_title = "Add Patient Record"
     @patient = Patient.new
@@ -37,8 +38,6 @@ class PatientsController < ApplicationController
 
     respond_to do | f |
       f.html {
-        # do stuff to populate your html view
-        # maybe nothing at all because @source is set
       }
 
       f.any(:xml, :json) {
