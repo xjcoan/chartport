@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
 
   def new
+    @page_title = "Register"
     @user = User.new
   end
 
@@ -17,9 +18,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @page_title = "Edit Account"
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      if @user != current_user
+        redirect_to "/"
+      end
+    else
+      redirect_to "/"
+    end
+  end
+
+  def update
+    params[:user].delete(:password) if params[:user][:password].blank?
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
+  end
+
   def dashboard
     @user = current_user
-    @page_title = @user.name + "\'s Dashboard"
+    @page_title = "Dashboard"
     require_user
     @patients = @user.patients.all.paginate(:page => params[:page])
   end
@@ -75,9 +98,18 @@ class UsersController < ApplicationController
     @page_title = "Patients Index"
     @patients = Patient.where.not(:user_id => current_user)
     if params[:search]
-      @patients = Patient.all.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+      @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
     else
-      @patients = Patient.all.order("created_at DESC")
+      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC")
+    end
+  end
+
+  def show
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      @page_title = @user.name
+    else
+      redirect_to "/"
     end
   end
 
@@ -85,6 +117,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :street_address, :city, :state, :zipcode, :password)
   end
 end

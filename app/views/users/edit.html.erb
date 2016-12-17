@@ -1,0 +1,74 @@
+<%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+
+<div class="container">
+  <div class="jumbotron">
+    <h2>Edit Account</h2>
+    <hr />
+    <h2><%= @user.name %></h2>
+  </div>
+</div>
+
+<div class="errors">
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>Email ID:</h3>
+  </div>
+  <%= f.text_field :email, :class => 'textfield' %>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>Street Address:</h3>
+  </div>
+  <%= f.text_field :street_address, :class => 'textfield' %>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>City:</h3>
+  </div>
+  <%= f.text_field :city, :class => 'textfield' %>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>State:</h3>
+  </div>
+  <%= f.text_field :state, :class => 'textfield' %>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>Zipcode:</h3>
+  </div>
+  <%= f.text_field :zipcode, :class => 'textfield' %>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>Enter Password to confirm changes:</h3>
+  </div>
+  <%= f.password_field :password, :class => 'textfield' %>
+</div>
+
+<br />
+
+<%= button_tag(type: 'submit', class: "btn btn-default") do %>
+ Update Record <span class="glyphicon glyphicon-floppy-disk"></span>
+<% end %>
+
+<% end %>

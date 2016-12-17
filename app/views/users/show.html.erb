@@ -1,8 +1,19 @@
-<% @patients.each do |patient| %>
+<div class="container">
+  <div class="jumbotron">
+    <h2><%= @user.name %></h2>
+  </div>
 
-<p>
-  <%= link_to patient.name, patient %>
-</p>
+  <div class="page-header">
+    <h3>Address:</h3>
+  </div>
+  <p>
+    <%= @user.street_address %>,
+    <%= @user.city %>
+    <%= @user.state %>
+    <%= @user.zipcode %>
+  </p>
 
-
-<% end %>
+  <div class="mapdiv">
+    <small>Google Map will be here</small>
+  </div>
+</div>

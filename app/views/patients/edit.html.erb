@@ -3,21 +3,11 @@
 <div class="container">
   <div class="jumbotron">
     <h2>Edit Patient Record</h2>
+    <hr />
+    <h3>
+      <%= @patient.name %>
+    </h3>
   </div>
-</div>
-
-<div class="container">
-  <div class="page-header">
-    <h3>Patient Name:</h3>
-  </div>
-  <%= f.text_field :name, :class => 'textfield' %>
-</div>
-
-<div class="container">
-  <div class="page-header">
-    <h3>Patient Date Of Birth:</h3>
-  </div>
-  <%= f.text_field :date_of_birth, :class => 'datepicker textfield' %>
 </div>
 
 <div class="container">
