@@ -1,16 +1,17 @@
-#medical-api
+#xcoan/medical-api
 
-"MedLog-API service" (WIP name)
+"MedLog Service" (WIP name)
 
-###What is it?
-This is a project developed in Ruby on Rails 5 for ArchHacks 2016.
+### What is it?
+In short, MedLog exists as a cloud-based service for healthcare professionals to have easy access to patient records.
 
-The concept of MedLog is for healthcare professionals to have easy access to patient records.
+Planned features include the ability for records to easily be transferred between healthcare facilities, records being exported for internal user, and the ability to prescribe mediations to patients and send those prescriptions to a chosen pharmacy.
 
-The records can be easily updated and maintained.  They are also easily exported for potential use
-in in-house creations of hospital IT departments, or to transfer from one medical database to another.
+### Development
+This project was originally created at [ArchHacks](http://archhacks.io/) in November 2016.
+It is currently being further revised and edited for the [GE Health Cloud Innovation Challenge](http://gehealthcloud.devpost.com).
 
-###How to download/install
+### How to download/install for development
 Make sure you have RVM, Ruby, and Ruby Gems installed.
 
 Git clone the app, cd into the directory, then run `bundle`.
@@ -21,5 +22,9 @@ Migrate the database: `bundle exec rake db:migrate`.
 Finally, to run over localhost, run `rails server`.
 
 
-#### Programmed by X Coan
-[Github](http://github.com/xcoan)
+#### Is there a license?
+Not yet. A license will be added upon completion/project submission to the Health Cloud Challenge (see above).
+
+
+#### Developers
+X Coan [Github](http://github.com/xcoan)
