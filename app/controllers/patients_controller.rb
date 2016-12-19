@@ -43,6 +43,8 @@ class PatientsController < ApplicationController
       f.any(:xml, :json) {
         render request.format.to_sym => @patients
       }
+
+      @medications = @patient.medications.all
     end
   end
 
@@ -72,10 +74,15 @@ class PatientsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def medicationindex
+    @patient = Patient.find(params[:id])
+    @medications = @patient.medications.all
+  end
+
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :date_of_birth, :phone_number, :medical_history, :medication, :user_id)
+    params.require(:patient).permit(:name, :date_of_birth, :phone_number, :medical_history, :user_id)
   end
 
 end

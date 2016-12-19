@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Add New Medication</h1>
+  </div>
+</div>
+
+<div class="container">
+    <% if @medication.errors.any? %>
+      <div class="page-header">
+        <h2><%= pluralize(@medication.errors.count, "error") %></h2>
+      </div>
+      <% @medication.errors.full_messages.each do |msg| %>
+        <p>
+          <%= msg %>
+        </p>
+      <% end %>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= form_for @medication do |f| %>
+  <p>
+    <%= f.label "Name" %><br />
+    <%= f.text_field :name, :class => 'textfield' %>
+  </p>
+
+  <p>
+    <%= f.label "Dosage" %><br />
+    <%= f.text_field :dosage, :class => 'textfield' %>
+  </p>
+
+  <p>
+    <%= f.label "Refills" %><br />
+    <%= f.text_field :refills, :class => 'textfield' %>
+  </p>
+
+  <p>
+    <%= hidden_field_tag(:patient_id, @patient.id) %>
+    <%= f.submit "Submit Medication" %>
+  </p>
+  <% end %>
+</div>

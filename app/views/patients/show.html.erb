@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="page-header">
-        <h4>Patient DOB:</h4>
+        <h4>Patient Date of Birth:</h4>
       </div>
       <p><%= @patient.date_of_birth %></p>
     </div>
@@ -36,14 +36,20 @@
   <p>
     <%= @patient.medical_history %>
   </p>
-
 </div>
 
 <div class="container">
   <div class="page-header">
-    <h4>Medications:</h4>
+    <h4>Medications</h4>
   </div>
-  <p>
-    <%= @patient.medication %>
-  </p>
+  <% if @patient.user_id = @current_user %>
+  <button class="btn-default"><%= link_to "Add Prescription", new_medication_path(:patient_id => @patient.id) %></button>
+  <% end %>
+  <% if @patient.medications.any? %>
+    <%= render 'layouts/medicationindex' %>
+  <% else %>
+    <p>
+      No known medications.
+    </p>
+  <% end %>
 </div>

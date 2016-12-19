@@ -1,0 +1,14 @@
+<% if @patient.medications.any? %>
+
+<br />
+
+  <% @medications.each do |medication| %>
+
+  <div class="container">
+    <p>
+      <%= link_to medication.name, medication %>
+    </p>
+  </div>
+
+  <% end %>
+<% end %>
