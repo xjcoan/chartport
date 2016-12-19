@@ -42,6 +42,14 @@ class MedicationsController < ApplicationController
     @medications = @patient.medications.all
   end
 
+  def destroy
+    @medication = Medication.find(params[:id])
+    @patient = Patient.find(@medication.patient_id)
+    @medication.destroy
+
+    redirect_to patient_path(@patient)
+  end
+
   private
   def medication_params
     params.require(:medication).permit(:name, :dosage, :refills, :patient_id)
