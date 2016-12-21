@@ -1,4 +1,6 @@
 class MedicationsController < ApplicationController
+  before_filter :require_user
+
   def new
     @patient = Patient.find(params[:patient_id])
     @page_title = "Add Medication for #{@patient.name}"

@@ -5,7 +5,6 @@ class CreatePatients < ActiveRecord::Migration[5.0]
       t.date :date_of_birth
       t.string :phone_number
       t.text :medical_history
-      t.text :medication
 
       t.references :user, index: true, foreign_key: true
 
