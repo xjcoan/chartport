@@ -1,0 +1,36 @@
+<% if @hospitals.any? %>
+
+<div class="container">
+  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Hospital" %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+  <% end %>
+</div>
+
+<br />
+
+  <div class="container">
+    <div class="page-header">
+      <h3>Search Results</h3>
+    </div>
+  </div>
+
+  <% @hospitals.each do |hospital| %>
+
+  <div class="container">
+    <p>
+      <%= link_to hospital.name, hospital %>
+    </p>
+  </div>
+
+  <% end %>
+
+<% else %>
+
+<div class="container">
+  <div class="page-header">
+    <h3>Search Results</h3>
+  </div>
+  <p>No Hospitals Found with "<%= params[:search] %>".</p>
+</div>
+<% end %>

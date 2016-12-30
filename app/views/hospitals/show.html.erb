@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @hospital.name %></h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="page-header">
+    <h2>Hospital Address:</h2>
+  </div>
+  <p>
+    <%= @hospital.street_address %>,
+    <%= @hospital.city %>,
+    <%= @hospital.state %>
+    <%= @hospital.zipcode %>
+  </p>
+
+  <small>Google Map Will Go Here</small>
+</div>

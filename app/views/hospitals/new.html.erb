@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="page-header">
+    <h1>New Patient Entry Form</h1>
+  </div>
+  <%= form_for @hospital do |f| %>
+
+
+  <% if @hospital.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@hospital.errors.count, "error") %>
+      </h2>
+        <% @hospital.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+    </div>
+  <% end %>
+
+  <div class="page-header">
+    <h3><%= f.label "Hospital Name" %></h3>
+  </div>
+  <p>
+    <%= f.text_field :name, :class => 'textfield' %>
+  </p>
+
+  <div class="page-header">
+    <h3><%= f.label "Street Address" %></h3>
+  </div>
+  <p>
+    <%= f.text_field :street_address, :class => 'textfield' %>
+  </p>
+
+  <div class="page-header">
+    <h3><%= f.label "City" %></h3>
+  </div>
+  <p>
+    <%= f.text_field :City, :class => 'textfield' %>
+  </p>
+
+  <div class="page-header">
+    <h3><%= f.label "State" %></h3>
+  </div>
+  <p>
+    <%= f.text_field :state, :class => 'textfield'%>
+  </p>
+
+  <div class="page-header">
+    <h3><%= f.label "Zipcode" %></h3>
+  </div>
+  <p>
+    <%= f.text_field :zipcode, :class => 'textfield'%>
+  </p>
+
+  <%= f.submit "Submit Hospital" %>
+
+  <% end %>
+
+</div>

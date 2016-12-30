@@ -1,0 +1,2 @@
+class Doctorlist < ApplicationRecord
+end

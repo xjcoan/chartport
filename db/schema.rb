@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218210414) do
+ActiveRecord::Schema.define(version: 20161230203655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doctorlists", force: :cascade do |t|
+    t.integer  "hospital_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["hospital_id", "created_at"], name: "index_doctorlists_on_hospital_id_and_created_at", using: :btree
+    t.index ["hospital_id"], name: "index_doctorlists_on_hospital_id", using: :btree
+    t.index ["user_id", "created_at"], name: "index_doctorlists_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_doctorlists_on_user_id", using: :btree
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "medications", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +67,8 @@ ActiveRecord::Schema.define(version: 20161218210414) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "doctorlists", "hospitals"
+  add_foreign_key "doctorlists", "users"
   add_foreign_key "medications", "patients"
   add_foreign_key "patients", "users"
 end
