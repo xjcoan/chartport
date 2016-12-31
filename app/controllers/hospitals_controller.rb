@@ -1,4 +1,5 @@
 class HospitalsController < ApplicationController
+  before_filter :require_user
 
   def new
     @page_title = "New Hospital"
@@ -32,7 +33,7 @@ class HospitalsController < ApplicationController
   end
 
   def show
-    @hosptial = Hospital.find(params[:id])
+    @hospital = Hospital.find(params[:id])
     @page_title = @hospital.name
 
     respond_to do | f |
@@ -46,22 +47,19 @@ class HospitalsController < ApplicationController
   end
 
   def index
-    @page_title = "Hospital"
-    @hosptials = Hospital.all.paginate(:page => 1, :per_page => 10)
+    @page_title = "Hospitals Index"
+    @hospitals = Hospital.all.paginate(:page => 1, :per_page => 10)
     if params[:search]
-      @hospitals = Hospital.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+      @hospitals = Hospital.where("name ILIKE ?", "%#{params[:search]}%").order("created_at DESC").paginate(:page => params[:page])
     else
       @hospitals = Hospital.all.order("created_at DESC")
     end
 
-    respond_to do | f |
-      f.html {
-      }
-
-      f.any(:xml, :json) {
-        render request.format.to_sym => @hospitals
-      }
-    end
+    # respond_to do | f |
+    #   f.any(:xml, :json) {
+    #     render request.format.to_sym => @hospitals
+    #   }
+    # end
   end
 
   def destroy
