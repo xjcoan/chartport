@@ -2,7 +2,9 @@
   <div class="jumbotron">
     <h1><%= @patient.name %></h1>
     <hr />
-    <p><%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.user_id)) %></p>
+    <p>Primary Care Physician: <br />
+      <%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.user_id)) %>
+    </p>
     <% if @patient.user_id == current_user.id %>
       <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"></span></button>
       <button><%= link_to 'Export JSON', controller: 'users', action: 'exportpatient', id: @patient.id, format: 'json' %></button>
