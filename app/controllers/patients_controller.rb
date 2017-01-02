@@ -41,7 +41,7 @@ class PatientsController < ApplicationController
       }
 
       f.any(:xml, :json) {
-        render request.format.to_sym => @patients
+        render request.format.to_sym => @patient
       }
 
       @medications = @patient.medications.all
@@ -96,6 +96,23 @@ class PatientsController < ApplicationController
   def medicationindex
     @patient = Patient.find(params[:id])
     @medications = @patient.medications.all
+  end
+
+  def importsearch
+    @page_title = "Patients Index"
+    @patients = Patient.where.not(:user_id => current_user)
+    if params[:search]
+      @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+    else
+      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC")
+    end
+  end
+
+  def importpatient
+    @page_title = "Import Patient"
+    @user = current_user
+    @patient = Patient.find(params[:id])
+    @patient.transfer(@user)
   end
 
   private

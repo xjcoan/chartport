@@ -22,12 +22,10 @@ Rails.application.routes.draw do
 
   get 'users/:id/export' => 'users#exportjson'
 
-  get 'patients/:id/export' => 'users#exportpatient'
+  get 'patient/:id/import' => 'patients#importpatient'
+  post 'patient/:id/import' => 'patients#importpatient'
 
-  get 'patient/:id/import' => 'users#importpatient'
-  post 'patient/:id/import' => 'users#importpatient'
-
-  get 'importui' => 'users#importsearch'
+  get 'importui' => 'patients#importsearch'
 
   get 'patientindex' => 'patients#adminindex'
 

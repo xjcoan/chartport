@@ -54,50 +54,16 @@ class UsersController < ApplicationController
 
 
   def exportjson
-    @patients = Patient.all
+    @user = User.find(params[:id])
+    @patients = @user.patients.all
 
     respond_to do | f |
       f.html {
       }
 
       f.any(:xml, :json) {
-        render request.format.to_sym => Patient.all
+        render request.format.to_sym => @user.patients.all
       }
-    end
-  end
-
-  def exportpatient
-    @patient = Patient.find(params[:id])
-
-    respond_to do | f |
-      f.html {
-        if (@current_user != @user)
-          redirect_to '/'
-        else
-          redirect_to 'dashboard'
-        end
-      }
-
-      f.any(:xml, :json) {
-        render request.format.to_sym => @patient
-      }
-    end
-  end
-
-  def importpatient
-    @page_title = "Import Patient"
-    @user = current_user
-    @patient = Patient.find(params[:id])
-    @patient.transfer(@user)
-  end
-
-  def importsearch
-    @page_title = "Patients Index"
-    @patients = Patient.where.not(:user_id => current_user)
-    if params[:search]
-      @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
-    else
-      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC")
     end
   end
 

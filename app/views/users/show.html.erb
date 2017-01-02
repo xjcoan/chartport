@@ -2,4 +2,7 @@
   <div class="jumbotron">
     <h2><%= @user.name %></h2>
   </div>
+  <% if current_user.admin %>
+  <p><%= link_to "JSON Export", controller: 'users', action: 'exportjson', id: @user.id, format: 'json' %></p>
+  <% end %>
 </div>
