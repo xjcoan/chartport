@@ -27,4 +27,4 @@ Not yet. A license will be added upon completion/project submission to the Healt
 
 
 #### Developers
-X Coan [Github](http://github.com/xcoan)
+X Coan [[Github](http://github.com/xcoan)]
