@@ -12,4 +12,8 @@ class Patient < ApplicationRecord
   def self.search(search)
     where("name ILIKE ?", "%#{search}%").all
   end
+
+  def transfer(user)
+    self.update(:user_id => user.id)
+  end
 end

@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   before_filter :require_user, except: ['new', 'create']
 
-
   def new
     @page_title = "Register"
     @user = User.new
@@ -87,11 +86,10 @@ class UsersController < ApplicationController
   end
 
   def importpatient
+    @page_title = "Import Patient"
     @user = current_user
-
     @patient = Patient.find(params[:id])
-
-    @patient.update(:user_id => @user.id)
+    @patient.transfer(@user)
   end
 
   def importsearch

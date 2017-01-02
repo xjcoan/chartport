@@ -54,12 +54,6 @@ class HospitalsController < ApplicationController
     else
       @hospitals = Hospital.all.order("created_at DESC")
     end
-
-    # respond_to do | f |
-    #   f.any(:xml, :json) {
-    #     render request.format.to_sym => @hospitals
-    #   }
-    # end
   end
 
   def destroy
