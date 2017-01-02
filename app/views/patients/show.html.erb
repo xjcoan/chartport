@@ -5,11 +5,11 @@
     <p>Primary Care Physician: <br />
       <%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.user_id)) %>
     </p>
-    <% if @patient.user_id == current_user.id %>
+    <% if current_user.admin %>
       <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"></span></button>
       <button><%= link_to 'Export JSON', controller: 'users', action: 'exportpatient', id: @patient.id, format: 'json' %></button>
     <% end %>
-    <% if @patient.user_id != current_user.id %>
+    <% if @patient.user_id != current_user.id && !current_user.admin%>
       <%= button_to "Import Patient", :controller => 'users', :action => "importpatient" %>
     <% end %>
   </div>
@@ -46,7 +46,7 @@
   <div class="page-header">
     <h4>Medications</h4>
   </div>
-  <% if @patient.user_id == @current_user.id %>
+  <% if @patient.user_id == @current_user.id && !current_user.admin %>
   <button class="btn-default"><%= link_to "Add Prescription", new_medication_path(:patient_id => @patient.id) %></button>
   <% end %>
   <% if @patient.medications.any? %>

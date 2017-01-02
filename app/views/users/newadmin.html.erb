@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1>Sign Up</h1>
     <hr />
-    <h2>New Medical Professional</h2>
+    <h2>New Admin</h2>
   </div>
 </div>
 
@@ -32,7 +32,7 @@
     <%= f.email_field :email %>
   </p>
 
-  <%= f.check_box :admin, {checked: false, style: "display:none"}%>
+  <%= f.check_box :admin, {checked: true, style: "display:none"}%>
 
   <p>
     <%= f.label :password %><br />

@@ -67,6 +67,25 @@ class PatientsController < ApplicationController
     end
   end
 
+  def adminindex
+    @page_title = "Patients Index"
+    @patients = Patient.all.paginate(:page => 1, :per_page => 10)
+    if params[:search]
+      @patients = Patient.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+    else
+      @patients = Patient.all.order("created_at DESC")
+    end
+
+    respond_to do | f |
+      f.html {
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @patients
+      }
+    end
+  end
+
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy

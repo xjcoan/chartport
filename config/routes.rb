@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'error' => 'pages#errorpage'
-  
+
   get 'about' => 'pages#about'
 
   get 'signup' => 'users#new'
+
+  get 'registeradmin' => 'users#newadmin'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
   post 'patient/:id/import' => 'users#importpatient'
 
   get 'importui' => 'users#importsearch'
+
+  get 'patientindex' => 'patients#adminindex'
 
   get ':invalid' => 'pages#errorpage'
 end

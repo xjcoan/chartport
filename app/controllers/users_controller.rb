@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
-  before_filter :require_user, except: ['new', 'create']
+  before_filter :require_user, except: ['new', 'create', 'newadmin']
 
   def new
     @page_title = "Register"
     @user = User.new
+    @user.admin = false
   end
 
   def create
@@ -29,6 +30,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @page_title = "Users Index"
+    @users = User.all.paginate(:page => 1, :per_page => 10)
+  end
+
   def update
     params[:user].delete(:password) if params[:user][:password].blank?
     @user = User.find(params[:id])
@@ -48,27 +54,20 @@ class UsersController < ApplicationController
 
 
   def exportjson
-    @user = User.find(params[:id])
-    @patients = @user.patients.all
+    @patients = Patient.all
 
     respond_to do | f |
       f.html {
-        if (@current_user != @user)
-          redirect_to '/'
-        else
-          redirect_to 'dashboard'
-        end
       }
 
       f.any(:xml, :json) {
-        render request.format.to_sym => @user.patients.all
+        render request.format.to_sym => Patient.all
       }
     end
   end
 
   def exportpatient
     @patient = Patient.find(params[:id])
-
 
     respond_to do | f |
       f.html {
@@ -111,10 +110,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def newadmin
+    @page_title = "Register Admin"
+    @user = User.new
+    @user.admin = true
+  end
+
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :admin, :password)
   end
 end
