@@ -16,4 +16,8 @@ class Patient < ApplicationRecord
   def transfer(user)
     self.update(:user_id => user.id)
   end
+
+  def find_age
+    age= Time.now.utc.to_date.year - self.date_of_birth.year
+  end
 end
