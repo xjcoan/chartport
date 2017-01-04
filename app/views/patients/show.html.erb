@@ -3,8 +3,14 @@
     <h1><%= @patient.name %></h1>
     <hr />
     <p>Primary Care Physician: <br />
-      <%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.user_id)) %>
+      <%= link_to User.find(@patient.primary_care_physician).name, user_path(User.find(@patient.primary_care_physician)) %>
     </p>
+    <% if @patient.primary_care_physician != @patient.user_id %>
+    <p>
+      Current Physician: <br />
+      <%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.primary_care_physician)) %>
+    </p>
+    <% end %>
     <% if current_user.admin %>
       <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"></span></button>
       <button><%= link_to 'Export JSON', controller: 'patients', action: 'show', format: 'json' %></button>

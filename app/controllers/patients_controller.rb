@@ -4,6 +4,7 @@ class PatientsController < ApplicationController
   def new
     @page_title = "Add Patient Record"
     @patient = Patient.new
+    @user = current_user
   end
 
   def create
@@ -118,7 +119,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :date_of_birth, :phone_number, :medical_history, :user_id)
+    params.require(:patient).permit(:name, :date_of_birth, :phone_number, :medical_history, :primary_care_physician, :user_id)
   end
 
 end

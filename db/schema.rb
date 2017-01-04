@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 20161230203655) do
     t.date     "date_of_birth"
     t.string   "phone_number"
     t.text     "medical_history"
+    t.integer  "primary_care_physician"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_patients_on_user_id", using: :btree
   end

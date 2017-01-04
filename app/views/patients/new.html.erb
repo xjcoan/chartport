@@ -44,6 +44,7 @@
     <%= f.text_area :medical_history, :class => 'textbox'%>
   </p>
 
+  <%= f.text_area :primary_care_physician, value: @user.id, style: "display: none;"  %>
   <%= f.submit "Submit Patient" %>
 
   <% end %>
