@@ -1,0 +1,32 @@
+<% if @doctorlists.any? %>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Hospital Registrations</h1>
+  </div>
+
+  <% @doctorlists.each do |doctorlist| %>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>
+        <%= link_to Doctor.find(doctorlist.user_id).name, doctor_path(Doctor.find(doctorlist.user_id)) %>
+      </p>
+    </div>
+  </div>
+  <p>
+
+  </p>
+  <% end %>
+</div>
+
+<% else %>
+<div class="container">
+  <div class="page-header">
+    <h1>No Registrations.</h1>
+  </div>
+  <p>
+    There are currently no doctors registered to this hospital.
+    <br />
+    Return to your <%= link_to "Dashboard", dashboard_path %>.
+  </p>
+</div>
+<% end %>

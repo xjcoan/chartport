@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Confirm Hospital Registration</h1>
+    <hr />
+    <p>
+      Do you want to register to this hospital?
+      <br />
+      <small>This can be deleted later.</small>
+    </p>
+  </div>
+</div>
+
+<%= form_for @doctorlist do |f| %>
+
+<%= f.text_field :hospital_id, value: @hospital.id, style: "display: none;" %>
+<%= f.text_field :user_id, value: @user.id, style: "display: none;" %>
+<%= f.submit "Register" %>
+<% end %>

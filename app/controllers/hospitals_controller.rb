@@ -60,7 +60,7 @@ class HospitalsController < ApplicationController
     @hospital = hospital.find(params[:id])
     @hospital.destroy
 
-    redirect_to dashboard_path
+    redirect_to hospitals_path
   end
 
   private

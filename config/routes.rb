@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, :sessions, :patients, :medications, :hospitals
+  resources :users, :sessions, :patients, :medications, :hospitals, :doctorlists
 
   # define root page
   root 'pages#index'
@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get 'importui' => 'patients#importsearch'
 
   get 'patientindex' => 'patients#adminindex'
+
+  get 'doctor_registrations' => 'doctorlists#userindex'
+
+  get 'hospital_registrations' => 'doctorlists#hospitalindex'
 
   get ':invalid' => 'pages#errorpage'
 end

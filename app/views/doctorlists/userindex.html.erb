@@ -1,0 +1,27 @@
+<% if @doctorlists.any? %>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Your Hospital Registrations</h1>
+  </div>
+
+  <% @doctorlists.each do |doctorlist| %>
+  <p>
+    <%= link_to Hospital.find(doctorlist.hospital_id).name, hospital_path(Hospital.find(doctorlist.hospital_id)) %>
+  </p>
+  <% end %>
+</div>
+
+<% else %>
+<div class="container">
+  <div class="page-header">
+    <h1>No Registrations.</h1>
+  </div>
+  <p>
+    You are not currently registered to any hospitals.
+    <br />
+    Check the <%= link_to "Hospital Index", hospitals_path %> to register.
+    <br />
+    Return to your <%= link_to "Dashboard", dashboard_path %>.
+  </p>
+</div>
+<% end %>

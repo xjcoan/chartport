@@ -16,6 +16,11 @@
       <p><%= link_to "New Hospital", new_hospital_path %></p>
     </div>
 
+    <div class="page-header">
+      <h1>Doctor-Hospital Registry</h1>
+    </div>
+    <p><%= link_to "Registry", doctorlists_path %></p>
+
     <!-- Center Column -->
     <div class="col-sm-8">
       <div class="jumbotron">
@@ -58,6 +63,11 @@
         <h1>Hospital Registry</h1>
       </div>
       <p><%= link_to "Search Hospitals", hospitals_path %></p>
+
+      <div class="page-header">
+        <h1>Your Hospital Registrations</h1>
+      </div>
+      <p><%= link_to "Registry", doctor_registrations_path %></p>
     </div>
 
     <!-- Center Column -->
