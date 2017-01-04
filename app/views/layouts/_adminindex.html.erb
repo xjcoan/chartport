@@ -1,14 +1,17 @@
 <% if @doctorlists.any? %>
 <div class="container">
   <div class="jumbotron">
-    <h1>Hospital Registrations</h1>
+    <h1>All Hospital Registrations</h1>
   </div>
 
   <% @doctorlists.each do |doctorlist| %>
   <div class="row">
     <div class="col-sm-6">
       <p>
-        <%= link_to Doctor.find(doctorlist.user_id).name, doctor_path(Doctor.find(doctorlist.user_id)) %>
+        Hospital: <%= link_to Hospital.find(doctorlist.hospital_id).name, hospital_path(Hospital.find(doctorlist.hospital_id)) %>
+      </p>
+      <p>
+        Doctor: <%= link_to User.find(doctorlist.user_id).name, user_path(User.find(doctorlist.user_id)) %>
       </p>
     </div>
   </div>
@@ -17,14 +20,13 @@
   </p>
   <% end %>
 </div>
-
 <% else %>
 <div class="container">
   <div class="page-header">
     <h1>No Registrations.</h1>
   </div>
   <p>
-    There are currently no doctors registered to this hospital.
+    There are no registrations in the system.
     <br />
     Return to your <%= link_to "Dashboard", dashboard_path %>.
   </p>

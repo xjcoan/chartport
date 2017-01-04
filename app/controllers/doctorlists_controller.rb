@@ -19,18 +19,19 @@ class DoctorlistsController < ApplicationController
   end
 
   def index
-    @doctorlists = Doctorlists.all.paginate(:page => 1, :per_page => 10)
-    @page_title = "Hospital Registrations'"
-  end
-
-  def userindex
-    @doctorlists = current_user.doctorlists.all.paginate(:page => 1, :per_page => 10)
-    @page_title = "Your Hospital Registrations'"
-  end
-
-  def hospitalindex
-    @hospital = Hospital.find(params[:hospital_id])
-    @page_title = "Registered Doctors"
+    @context = params[:context]
+    if @context == "user"
+      @user = User.find(params[:given_id])
+      @page_title = "#{@user.name} Hospital Registrations"
+      @doctorlists = @user.doctorlists.all.paginate(:page => 1, :per_page => 10)
+    elsif @context == "hospital"
+      @page_title = "Registered Doctors"
+      @hospital = Hospital.find(params[:given_id])
+      @doctorlists = @hospital.doctorlists.all
+    elsif @context == "admin"
+      @page_title = "Hospital Registrations"
+      @doctorlists = Doctorlist.all.paginate(:page => 1, :per_page => 10)
+    end
   end
 
   def destroy

@@ -29,9 +29,5 @@ Rails.application.routes.draw do
 
   get 'patientindex' => 'patients#adminindex'
 
-  get 'doctor_registrations' => 'doctorlists#userindex'
-
-  get 'hospital_registrations' => 'doctorlists#hospitalindex'
-
   get ':invalid' => 'pages#errorpage'
 end

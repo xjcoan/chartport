@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1><%= @hospital.name %></h1>
     <hr />
-    <small><%= link_to "View Registered Doctors", hospital_registrations_path %></small>
+    <small><%= link_to "View Registered Doctors", doctorlists_path(:context => "hospital", :given_id => @hospital.id) %></small>
   </div>
 
 <% if current_user.admin %>
