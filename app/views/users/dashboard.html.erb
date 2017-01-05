@@ -38,14 +38,14 @@
     <!-- Righthand Column -->
     <div class="col-sm-2">
       <div class="page-header">
-        <h2>Patients Index</h2>
+        <h1>Patients Index</h1>
       </div>
       <p>
         <%= link_to "Patient List", controller: :patients, action: :adminindex %>
       </p>
 
       <div class="page-header">
-        <h2>Export All Patients</h2>
+        <h1>Export All Patients</h1>
       </div>
       <p><%= link_to "JSON Export", controller: 'patients', action: 'adminindex', format: 'json' %></p>
     </div>
