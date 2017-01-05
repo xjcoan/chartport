@@ -10,11 +10,16 @@
       <p>
         Hospital: <%= link_to Hospital.find(doctorlist.hospital_id).name, hospital_path(Hospital.find(doctorlist.hospital_id)) %>
       </p>
+    </div>
+    <div class="col-sm-6">
       <p>
         Doctor: <%= link_to User.find(doctorlist.user_id).name, user_path(User.find(doctorlist.user_id)) %>
       </p>
     </div>
   </div>
+  <small><%= link_to "Delete", doctorlist_path(doctorlist), method: :delete,
+  data: { confirm: "Are you sure you want to delete this relation?"} %></small>
+  <hr />
   <p>
 
   </p>
