@@ -34,6 +34,7 @@ class HospitalsController < ApplicationController
 
   def show
     @hospital = Hospital.find(params[:id])
+    gon.hospital = @hospital
     @page_title = @hospital.name
 
     respond_to do | f |
