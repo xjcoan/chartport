@@ -19,27 +19,14 @@
 
   <% @patients.each do |patient| %>
 
-  <div class="container namelink">
-    <p>
-      <%= link_to patient.name, patient %>
-    </p>
-    <table class="popup">
-      <tr>
-        <th>
-          <%= patient.name %>
-        </th>
-      </tr>
-      <tr>
-        <td>
-          Physician: <%= User.find(patient.user_id).name %>
-        </td>
-      </tr>
-      <tr>
-        <td>Age: <%= patient.find_age %></td>
-        <td>Phone: <%= patient.phone_number %></td>
-      </tr>
-    </table>
+  <div class="hovertip"><%= link_to patient.name, patient %>
+    <span class="hovertiptext"><%= patient.name %><br />
+      Physician: <%= User.find(patient.user_id).name %><br />
+      Age: <%= patient.find_age %> <br />
+      Phone: <%= patient.phone_number %>
+     </span>
   </div>
+  <br />
 
   <% end %>
 

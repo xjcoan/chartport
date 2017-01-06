@@ -25,11 +25,12 @@
 
   <% @hospitals.each do |hospital| %>
 
-  <div class="container">
-    <h4>
-      <%= link_to hospital.name, hospital %>
-    </h4>
+  <div class="hovertip"><p><%= link_to hospital.name, hospital %></p>
+    <span class="hovertiptext"><%= hospital.name %><br />
+      <%= hospital.city %>, <%= hospital.state %>
+     </span>
   </div>
+  <br />
 
   <% end %>
 

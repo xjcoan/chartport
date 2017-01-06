@@ -10,13 +10,13 @@
 
   <% @users.each do |user| %>
 
-  <div class="container">
-    <p>
-      <%= link_to user.name, user %>
-      <% if user.id == current_user.id %><small>(You)</small><% end %>
-      <% if user.admin %><small>admin</small><% end %>
-    </p>
+  <div class="hovertip"><%= link_to user.name, user %><% if user.id == current_user.id %><small>(You)</small><% end %>
+    <span class="hovertiptext"><%= user.name %><br />
+      Email: <%= user.email %>
+      <% if user.admin %><br /><small>admin</small><% end %>
+     </span>
   </div>
+  <br />
 
   <% end %>
 
