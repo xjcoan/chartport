@@ -56,7 +56,7 @@
   <button class="btn-default"><%= link_to "Add Prescription", new_medication_path(:patient_id => @patient.id) %></button>
   <% end %>
   <% if @patient.medications.any? %>
-    <%= render 'layouts/medicationindex' %>
+    <%= render 'medications/medicationindex' %>
   <% else %>
     <p>
       No known medications.

@@ -29,6 +29,9 @@ class DoctorlistsController < ApplicationController
       @hospital = Hospital.find(params[:given_id])
       @doctorlists = @hospital.doctorlists.all
     elsif @context == "admin"
+      if !current_user.admin
+        redirect_to root_path
+      end
       @page_title = "Hospital Registrations"
       @doctorlists = Doctorlist.all.paginate(:page => 1, :per_page => 10)
     end
