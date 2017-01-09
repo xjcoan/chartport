@@ -42,7 +42,7 @@ class HospitalsController < ApplicationController
       }
 
       f.any(:xml, :json) {
-        render request.format.to_sym => @hospitals
+        render request.format.to_sym => @hospital
       }
     end
   end
@@ -54,6 +54,15 @@ class HospitalsController < ApplicationController
       @hospitals = Hospital.where("name ILIKE ?", "%#{params[:search]}%").order("created_at DESC").paginate(:page => params[:page])
     else
       @hospitals = Hospital.all.order("created_at DESC")
+    end
+
+    respond_to do | f |
+      f.html {
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @hospitals
+      }
     end
   end
 

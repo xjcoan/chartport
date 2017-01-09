@@ -33,6 +33,14 @@ class UsersController < ApplicationController
   def index
     @page_title = "Users Index"
     @users = User.all.paginate(:page => 1, :per_page => 10)
+    respond_to do | f |
+      f.html {
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @users
+      }
+    end
   end
 
   def update
@@ -52,27 +60,21 @@ class UsersController < ApplicationController
     @patients = @user.patients.all.paginate(:page => params[:page])
   end
 
-
-  def exportjson
-    @user = User.find(params[:id])
-    @patients = @user.patients.all
-
-    respond_to do | f |
-      f.html {
-      }
-
-      f.any(:xml, :json) {
-        render request.format.to_sym => @user.patients.all
-      }
-    end
-  end
-
   def show
     if User.exists?(params[:id])
       @user = User.find(params[:id])
       @page_title = @user.name
     else
       redirect_to "/"
+    end
+
+    respond_to do | f |
+      f.html {
+      }
+
+      f.any(:xml, :json) {
+        render request.format.to_sym => @user
+      }
     end
   end
 
