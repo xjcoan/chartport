@@ -1,8 +1,10 @@
-<div class="container">
-  <div class="jumbotron">
-    <h2><%= @user.name %></h2>
+<div class="col-md-11">
+  <div class="container">
+    <div class="jumbotron">
+      <h2><%= @user.name %></h2>
+    </div>
+    <% if current_user.admin %>
+    <p><%= link_to "JSON Export", controller: 'users', action: 'show', id: @user.id, format: 'json' %></p>
+    <% end %>
   </div>
-  <% if current_user.admin %>
-  <p><%= link_to "JSON Export", controller: 'users', action: 'show', id: @user.id, format: 'json' %></p>
-  <% end %>
 </div>

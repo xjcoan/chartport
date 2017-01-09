@@ -1,7 +1,9 @@
-<% if @context == "user" %>
-  <%= render "doctorlists/userindex" %>
-<% elsif @context == "hospital" %>
-  <%= render "doctorlists/hospitalindex" %>
-<% elsif @context == "admin" %>
-  <%= render "doctorlists/adminindex" %>
-<% end %>
+<div class="col-md-11">
+  <% if @context == "user" %>
+    <%= render "doctorlists/userindex" %>
+  <% elsif @context == "hospital" %>
+    <%= render "doctorlists/hospitalindex" %>
+  <% elsif @context == "admin" %>
+    <%= render "doctorlists/adminindex" %>
+  <% end %>
+</div>
