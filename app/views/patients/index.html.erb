@@ -1,46 +1,49 @@
-<% if @patients.any? %>
+<div class="col-md-11">
+  <% if @patients.any? %>
 
-<div class="container">
-  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
-      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
-  <% end %>
+  <div class="container">
+    <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
+        <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+    <% end %>
+
+    <br />
+
+    <button><%= link_to "New Patient Entry", new_patient_path %></button>
+  </div>
 
   <br />
 
-  <button><%= link_to "New Patient Entry", new_patient_path %></button>
-</div>
+    <div class="container">
+      <div class="page-header">
+        <h3>Search Results</h3>
+      </div>
+    </div>
 
-<br />
+    <% @patients.each do |patient| %>
+
+    <div class="hovertip"><%= link_to patient.name, patient %>
+      <span class="hovertiptext"><%= patient.name %><br />
+        Physician: <%= User.find(patient.user_id).name %><br />
+        Age: <%= patient.find_age %> <br />
+        Phone: <%= patient.phone_number %>
+       </span>
+    </div>
+    <br />
+
+    <% end %>
+
+  <% else %>
 
   <div class="container">
     <div class="page-header">
       <h3>Search Results</h3>
     </div>
+    <p>No patients could be found with the search "<%= params[:search] %>".</p>
+    <%= link_to "Return to Search", hospitals_path %>
+    <br />
+    <%= link_to "Dashboard", dashboard_path %>
   </div>
-
-  <% @patients.each do |patient| %>
-
-  <div class="hovertip"><%= link_to patient.name, patient %>
-    <span class="hovertiptext"><%= patient.name %><br />
-      Physician: <%= User.find(patient.user_id).name %><br />
-      Age: <%= patient.find_age %> <br />
-      Phone: <%= patient.phone_number %>
-     </span>
-  </div>
-  <br />
-
   <% end %>
 
-<% else %>
-
-<div class="container">
-  <div class="page-header">
-    <h3>Search Results</h3>
-  </div>
-  <p>No patients could be found with the search "<%= params[:search] %>".</p>
-  <%= link_to "Return to Search", hospitals_path %>
-  <br />
-  <%= link_to "Dashboard", dashboard_path %>
 </div>
-<% end %>
