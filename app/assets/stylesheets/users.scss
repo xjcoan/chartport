@@ -6,3 +6,8 @@
   overflow: hidden;
   min-height: 200px;
 }
+
+#vertical_nav {
+  height:calc(100vh - 110px);
+  width: 110px;
+}

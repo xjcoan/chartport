@@ -9,12 +9,14 @@
       <% if @patient.primary_care_physician != @patient.user_id %>
       <p>
         Current Physician: <br />
-        <%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.primary_care_physician)) %>
+        <%= link_to User.find(@patient.user_id).name, user_path(User.find(@patient.user_id)) %>
       </p>
       <% end %>
+      <% if @patient.user_id == current_user.id %>
+        <button class="btn btn-default"><%= link_to "Edit Patient", edit_patient_path(@patient) %></button>
+      <% end %>
       <% if current_user.admin %>
-        <button class="btn btn-default"><%= link_to "Edit Patient Info", edit_patient_path(@patient) %> <span class="glyphicon glyphicon-edit"></span></button>
-        <button><%= link_to 'Export JSON', controller: 'patients', action: 'show', format: 'json' %></button>
+        <button class="btn btn-default"><%= link_to 'Export JSON', controller: 'patients', action: 'show', format: 'json' %></button>
       <% end %>
       <% if @patient.user_id != current_user.id && !current_user.admin%>
         <%= button_to "Import Patient", :controller => 'patients', :action => "importpatient" %>
@@ -29,13 +31,13 @@
         <div class="page-header">
           <h4>Patient Date of Birth:</h4>
         </div>
-        <p><%= @patient.date_of_birth %></p>
+        <p><%= @patient.date_of_birth.strftime("%b %e, %Y") %> (<%= @patient.find_age %> years old)</p>
       </div>
       <div class="col-sm-6">
         <div class="page-header">
           <h4>Patient Phone Number:</h4>
         </div>
-        <p><%= @patient.phone_number %></p>
+        <p><%= number_to_phone(@patient.phone_number) %></p>
       </div>
     </div>
   </div>

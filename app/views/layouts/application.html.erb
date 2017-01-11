@@ -20,6 +20,8 @@
       <% if current_user %>
         <% if current_user.admin %>
           <%= render 'users/adminnav' %>
+        <% else %>
+          <%= render 'users/usernav' %>
         <% end %>
       <% end %>
       <%= yield %>

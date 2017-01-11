@@ -1,52 +1,55 @@
-<div class="container">
-  <div class="page-header">
-    <h1>New Patient Entry Form</h1>
-  </div>
-  <%= form_for @patient do |f| %>
-
-
-  <% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@patient.errors.count, "error") %>
-      </h2>
-        <% @patient.errors.full_messages.each do |msg| %>
-          <p><%= msg %></p>
-        <% end %>
+<div class="col-md-11">
+  <div class="container">
+    <div class="page-header">
+      <h1>New Patient Entry Form</h1>
     </div>
-  <% end %>
+    <%= form_for @patient do |f| %>
 
-  <div class="page-header">
-    <h3><%= f.label "Patient Name" %></h3>
+
+    <% if @patient.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@patient.errors.count, "error") %>
+        </h2>
+          <% @patient.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+      </div>
+    <% end %>
+
+    <div class="page-header">
+      <h3><%= f.label "Patient Name" %></h3>
+    </div>
+    <p>
+      <%= f.text_field :name, :class => 'textfield' %>
+    </p>
+
+    <div class="page-header">
+      <h3><%= f.label "Date of Birth" %></h3>
+    </div>
+    <p>
+      <%= f.date_field :date_of_birth, :class => 'datepicker textfield', value: Time.now.strftime("%m/%d/%Y") %>
+    </p>
+
+    <div class="page-header">
+      <h3><%= f.label "Phone Number" %></h3>
+    </div>
+    <p>
+      <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone('1112222') %>
+    </p>
+
+    <div class="page-header">
+      <h3><%= f.label "Medical History Notes" %></h3>
+    </div>
+    <p>
+      <%= f.text_area :medical_history, :class => 'textbox'%>
+    </p>
+
+    <%= f.text_area :primary_care_physician, value: @user.id, style: "display: none;"  %>
+    <%= f.submit "Submit Patient" %>
+
+    <% end %>
+
   </div>
-  <p>
-    <%= f.text_field :name, :class => 'textfield' %>
-  </p>
-
-  <div class="page-header">
-    <h3><%= f.label "Date of Birth" %></h3>
-  </div>
-  <p>
-    <%= f.text_field :date_of_birth, :class => 'datepicker textfield' %>
-  </p>
-
-  <div class="page-header">
-    <h3><%= f.label "Phone Number" %></h3>
-  </div>
-  <p>
-    <%= f.text_field :phone_number, :class => 'textfield' %>
-  </p>
-
-  <div class="page-header">
-    <h3><%= f.label "Medical History Notes" %></h3>
-  </div>
-  <p>
-    <%= f.text_area :medical_history, :class => 'textbox'%>
-  </p>
-
-  <%= f.text_area :primary_care_physician, value: @user.id, style: "display: none;"  %>
-  <%= f.submit "Submit Patient" %>
-
-  <% end %>
 
 </div>
