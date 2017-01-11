@@ -1,33 +1,36 @@
-<%= form_for :patient, url: patient_path(@patient), method: :patch do |f| %>
+<div class="col-md-11">
+  <%= form_for :patient, url: patient_path(@patient), method: :patch do |f| %>
 
-<div class="container">
-  <div class="jumbotron">
-    <h2>Edit Patient Record</h2>
-    <hr />
-    <h3>
-      <%= @patient.name %>
-    </h3>
+  <div class="container">
+    <div class="jumbotron">
+      <h2>Edit Patient Record</h2>
+      <hr />
+      <h3>
+        <%= @patient.name %>
+      </h3>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="page-header">
-    <h3>Patient Phone Number:</h3>
+  <div class="container">
+    <div class="page-header">
+      <h3>Patient Phone Number:</h3>
+    </div>
+    <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone(@patient.phone_number) %>
   </div>
-  <%= f.text_field :phone_number, :class => 'textfield' %>
-</div>
 
-<div class="container">
-  <div class="page-header">
-    <h3>Medical History:</h3>
+  <div class="container">
+    <div class="page-header">
+      <h3>Medical History:</h3>
+    </div>
+    <%= f.text_area :medical_history, :class => 'textbox' %>
   </div>
-  <%= f.text_area :medical_history, :class => 'textbox' %>
+  <br />
+
+  <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+   Update Record <span class="glyphicon glyphicon-floppy-disk"></span>
+  <% end %>
+
+
+  <% end %>
+
 </div>
-<br />
-
-<%= button_tag(type: 'submit', class: "btn btn-default") do %>
- Update Record <span class="glyphicon glyphicon-floppy-disk"></span>
-<% end %>
-
-
-<% end %>

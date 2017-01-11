@@ -1,0 +1,31 @@
+<div class="col-md-1">
+  <div class="navbar navbar-inverse navbar-stacked navbar-fixed-left" id="vertical_nav">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Dashboard", dashboard_path %></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Index", users_path %></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Patients
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "My Patients", patients_path %></li>
+          <li><%= link_to "New", new_patient_path %></li>
+          <li><%= link_to "Import Patient UI", importui_path %></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hospitals
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Search Hospitals", hospitals_path %></li>
+          <li><%= link_to "My Registrations", doctorlists_path(:context => "user", :given_id => current_user.id) %></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

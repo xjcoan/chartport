@@ -1,48 +1,51 @@
-<% if @hospitals.any? %>
+<div class="col-md-11">
+  <% if @hospitals.any? %>
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Hospitals Index</h1>
-    <small><%= link_to "Return to Dashboard", dashboard_path %></small>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Hospitals Index</h1>
+      <small><%= link_to "Return to Dashboard", dashboard_path %></small>
+    </div>
+    <br />
   </div>
+
+  <div class="container">
+    <%= form_tag(hospitals_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Hospital" %>
+        <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+    <% end %>
+  </div>
+
   <br />
-</div>
 
-<div class="container">
-  <%= form_tag(hospitals_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Hospital" %>
-      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
-  <% end %>
-</div>
+    <div class="container">
+      <div class="page-header">
+        <h3>Search Results</h3>
+      </div>
+    </div>
 
-<br />
+    <% @hospitals.each do |hospital| %>
+
+    <div class="hovertip"><p><%= link_to hospital.name, hospital %></p>
+      <span class="hovertiptext"><%= hospital.name %><br />
+        <%= hospital.city %>, <%= hospital.state %>
+       </span>
+    </div>
+    <br />
+
+    <% end %>
+
+  <% else %>
 
   <div class="container">
     <div class="page-header">
       <h3>Search Results</h3>
     </div>
+    <p>No Hospitals Found with "<%= params[:search] %>".</p>
+    <%= link_to "Return to Search", hospitals_path %>
+    <br />
+    <%= link_to "Dashboard", dashboard_path %>
   </div>
-
-  <% @hospitals.each do |hospital| %>
-
-  <div class="hovertip"><p><%= link_to hospital.name, hospital %></p>
-    <span class="hovertiptext"><%= hospital.name %><br />
-      <%= hospital.city %>, <%= hospital.state %>
-     </span>
-  </div>
-  <br />
-
   <% end %>
 
-<% else %>
-
-<div class="container">
-  <div class="page-header">
-    <h3>Search Results</h3>
-  </div>
-  <p>No Hospitals Found with "<%= params[:search] %>".</p>
-  <%= link_to "Return to Search", hospitals_path %>
-  <br />
-  <%= link_to "Dashboard", dashboard_path %>
 </div>
-<% end %>

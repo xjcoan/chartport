@@ -1,31 +1,40 @@
-<% if @users.any? %>
-
-<br />
+<div class="col-md-11">
 
   <div class="container">
-    <div class="page-header">
-      <h3>Search Results</h3>
+    <div class="jumbotron">
+      <h1>Users Index</h1>
     </div>
   </div>
+  <% if @users.any? %>
 
-  <% @users.each do |user| %>
-
-  <div class="hovertip"><%= link_to user.name, user %><% if user.id == current_user.id %><small>(You)</small><% end %>
-    <span class="hovertiptext"><%= user.name %><br />
-      Email: <%= user.email %>
-      <% if user.admin %><br /><small>admin</small><% end %>
-     </span>
-  </div>
   <br />
 
+    <div class="container">
+      <div class="page-header">
+        <h3>Search Results</h3>
+      </div>
+    </div>
+
+    <% @users.each do |user| %>
+
+    <div class="hovertip"><%= link_to user.name, user %><% if user.id == current_user.id %><small>(You)</small><% end %>
+      <span class="hovertiptext"><%= user.name %><br />
+        Email: <%= user.email %>
+        <% if user.admin %><br /><small>admin</small><% end %>
+       </span>
+    </div>
+    <br />
+
+    <% end %>
+
+  <% else %>
+
+    <div class="container">
+      <div class="page-header">
+        <h3>Search Results</h3>
+      </div>
+      <p>No users could be found.</p>
+    </div>
   <% end %>
 
-<% else %>
-
-  <div class="container">
-    <div class="page-header">
-      <h3>Search Results</h3>
-    </div>
-    <p>No users could be found.</p>
-  </div>
-<% end %>
+</div>

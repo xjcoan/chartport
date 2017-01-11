@@ -16,6 +16,15 @@
 
   <body>
     <%= render "pages/navbar" %>
-    <%= yield %>
+    <div class="row">
+      <% if current_user %>
+        <% if current_user.admin %>
+          <%= render 'users/adminnav' %>
+        <% else %>
+          <%= render 'users/usernav' %>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -2,15 +2,15 @@
 
 <%= will_paginate @patients %>
 
-  <button class="btn btn-default"><%= link_to "Search Database", patients_path %> <span class="glyphicon glyphicon-list"></span></button>
-  <hr />
-  <h4>Recent Patients</h4>
+  <% if @patients.where(updated_at: (Time.now - 24.hours)..Time.now).any? %>
 
-  <% @patients.where(updated_at: (Time.now - 24.hours)..Time.now).each do |patient| %>
-  <p>
-    <%= link_to patient.name, patient %>
-  </p>
+    <% @patients.where(updated_at: (Time.now - 24.hours)..Time.now).each do |patient| %>
+    <p><%= link_to patient.name, patient %></p>
 
+    <% end %>
+
+  <% else %>
+    <p>No Recent Patients</p>
   <% end %>
 
 <% else %>
