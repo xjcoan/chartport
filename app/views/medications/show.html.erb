@@ -1,26 +1,23 @@
-<div class="col-md-11">
-  <div class="container">
-    <div class="jumbotron">
-      <h2><%= @patient.name %>'s <%= @medication.name %> Perscription</h2>
-      <hr />
-      <button class="btn btn-default"><%= link_to "Return to Patient", patient_path(@patient) %></button>
-    </div>
-
-    <div class="page-header">
-      <h3>Dosage:</h3>
-    </div>
-    <p><%= @medication.dosage %></p>
-
-    <div class="page-header">
-      <h3>Refills:</h3>
-    </div>
-    <p><%= @medication.refills %></p>
-
-    <br />
-    <% if @patient.user_id == current_user.id %>
-    <button class="btn btn-default"><%= link_to "Edit Prescription", edit_medication_path(@medication) %></button>
-    <button class="btn btn-default"><%= link_to "Delete Medication", medication_path(@medication), method: :delete %></button>
-    <% end %>
+<div class="container">
+  <div class="jumbotron">
+    <h2><%= @patient.name %>'s <%= @medication.name %> Perscription</h2>
+    <hr />
+    <button class="btn btn-default"><%= link_to "Return to Patient", patient_path(@patient) %></button>
   </div>
 
+  <div class="page-header">
+    <h3>Dosage:</h3>
+  </div>
+  <p><%= @medication.dosage %></p>
+
+  <div class="page-header">
+    <h3>Refills:</h3>
+  </div>
+  <p><%= @medication.refills %></p>
+
+  <br />
+  <% if @patient.user_id == current_user.id %>
+  <button class="btn btn-default"><%= link_to "Edit Prescription", edit_medication_path(@medication) %></button>
+  <button class="btn btn-default"><%= link_to "Delete Medication", medication_path(@medication), method: :delete %></button>
+  <% end %>
 </div>

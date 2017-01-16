@@ -8,6 +8,22 @@
 }
 
 #vertical_nav {
+  left: 0;
+  position: absolute;
   height:calc(100vh - 110px);
   width: 110px;
+  background-color: #2780e3;
+  a{
+    color: white;
+  }
+}
+
+.nav>li>a:hover {
+  background-color: #1967be !important;
+}
+
+.dropdown-menu {
+  li a{
+    color: black !important;
+  }
 }

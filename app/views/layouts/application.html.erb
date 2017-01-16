@@ -15,16 +15,15 @@
   </head>
 
   <body>
-    <%= render "pages/navbar" %>
-    <div class="row">
-      <% if current_user %>
-        <% if current_user.admin %>
-          <%= render 'users/adminnav' %>
-        <% else %>
-          <%= render 'users/usernav' %>
-        <% end %>
+    <% if current_user %>
+      <% if current_user.admin %>
+        <%= render 'users/adminnav' %>
+      <% else%>
+        <%= render 'users/usernav' %>
       <% end %>
-      <%= yield %>
-    </div>
+    <% else %>
+      <%= render "pages/no_user_navbar" %>
+    <% end %>
+    <%= yield %>
   </body>
 </html>
