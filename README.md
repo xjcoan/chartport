@@ -1,4 +1,4 @@
-#xcoan/medical-api
+#xcoan/medlog
 
 "MedLog Service" (WIP name)
 
