@@ -1,8 +1,18 @@
 <div class="container">
   <div class="jumbotron">
-    <h2><%= @user.name %></h2>
+    <h1><%= @user.name %></h1>
+    <p>Medlog join date: <%= @user.created_at.strftime("%b %e, %Y") %></p>
   </div>
   <% if current_user.admin %>
   <p><%= link_to "JSON Export", controller: 'users', action: 'show', id: @user.id, format: 'json' %></p>
+  <% end %>
+
+  <% if @user.admin %>
+  <p>This user is an admin.</p>
+  <% else %>
+  <div class="page-header">
+    <h2>Hospital Registrations</h2>
+  </div>
+  <%= render "doctorlists/userindex" %>
   <% end %>
 </div>

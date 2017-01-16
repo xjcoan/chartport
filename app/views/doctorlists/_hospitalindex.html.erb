@@ -1,13 +1,10 @@
 <% if @doctorlists.any? %>
 <div class="container">
-  <div class="jumbotron">
-    <h1>Hospital Registrations</h1>
-  </div>
 
   <% @doctorlists.each do |doctorlist| %>
     <p>
       <%= link_to User.find(doctorlist.user_id).name, user_path(User.find(doctorlist.user_id)) %>
-      <% if doctorlist.user_id == current_user.id || current_user.admin %> | 
+      <% if doctorlist.user_id == current_user.id || current_user.admin %> |
       <small><%= link_to "Delete", doctorlist_path(doctorlist), method: :delete,
       data: { confirm: "Are you sure you want to delete this relation?"} %></small>
       <% end %>

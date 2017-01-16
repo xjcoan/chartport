@@ -11,6 +11,8 @@ Planned features include the ability for records to easily be transferred betwee
 This project was originally created at [ArchHacks](http://archhacks.io/) in November 2016.
 It is currently being further revised and edited for the [GE Health Cloud Innovation Challenge](http://gehealthcloud.devpost.com).
 
+A page style guide (for front-end/view development) can be found [here](/app/views/style.md).
+
 ### How to download/install for development
 Make sure you have RVM, Ruby, and Ruby Gems installed.
 

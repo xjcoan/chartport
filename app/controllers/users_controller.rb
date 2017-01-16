@@ -64,6 +64,7 @@ class UsersController < ApplicationController
     if User.exists?(params[:id])
       @user = User.find(params[:id])
       @page_title = @user.name
+      @doctorlists = @user.doctorlists
     else
       redirect_to "/"
     end
