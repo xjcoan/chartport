@@ -1,0 +1,19 @@
+// Place all the styles related to the patient_notes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+table {
+  border-spacing: 15px;
+  border: 1px solid;
+  tr {
+    border: 1px solid;
+    th {
+      border: 1px solid;
+    }
+    td {
+      border: 1px solid;
+      padding: 15px;
+    }
+  }
+}

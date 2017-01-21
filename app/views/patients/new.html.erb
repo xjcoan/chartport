@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="page-header">
+  <div class="jumbotron">
     <h1>New Patient Entry Form</h1>
   </div>
   <%= form_for @patient do |f| %>
@@ -35,13 +35,6 @@
   </div>
   <p>
     <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone('1112222') %>
-  </p>
-
-  <div class="page-header">
-    <h3><%= f.label "Medical History Notes" %></h3>
-  </div>
-  <p>
-    <%= f.text_area :medical_history, :class => 'textbox'%>
   </p>
 
   <%= f.text_area :primary_care_physician, value: @user.id, style: "display: none;"  %>

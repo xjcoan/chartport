@@ -1,0 +1,33 @@
+<% if @patient_notes.any? %>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-3">
+    <h4>Date Created</h4>
+  </div>
+  <div class="col-sm-4">
+    <h4>Note</h4>
+  </div>
+  <div class="col-sm-3">
+    <h4>Physician</h4>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+  <% @patient_notes.each do |patient_note| %>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-3">
+        <%= patient_note.created_at.strftime('%B %d, %Y') %>
+      </div>
+      <div class="col-sm-4">
+        <%= patient_note.note %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to User.find(patient_note.user_id).name, user_path(User.find(patient_note.user_id)) %>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+  <% end %>
+<% else %>
+
+  <h5><%= @patient.name %> Currently has no associated notes.</h5>
+<% end %>

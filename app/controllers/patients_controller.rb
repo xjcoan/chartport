@@ -36,6 +36,7 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @page_title = @patient.name + " record"
+    @patient_notes = @patient.patient_notes
 
     respond_to do | f |
       f.html {
@@ -119,7 +120,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :date_of_birth, :phone_number, :medical_history, :primary_care_physician, :user_id)
+    params.require(:patient).permit(:name, :date_of_birth, :phone_number, :primary_care_physician, :user_id)
   end
 
 end

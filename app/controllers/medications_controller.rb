@@ -9,6 +9,7 @@ class MedicationsController < ApplicationController
 
   def create
     @patient = Patient.find(params[:patient_id])
+    @page_title = "Add Medication for #{@patient.name}"
     @medication = @patient.medications.new(medication_params)
     if @medication.save
       redirect_to patient_path(@patient)
