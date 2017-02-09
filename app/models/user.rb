@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+
+  #attr_encrypted :name, key: ENV['256_encrypt_key']
 end

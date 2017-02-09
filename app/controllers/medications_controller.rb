@@ -1,5 +1,5 @@
 class MedicationsController < ApplicationController
-  before_filter :require_user
+  before_action :require_user
 
   def new
     @patient = Patient.find(params[:patient_id])

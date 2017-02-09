@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :require_user, except: ['new', 'create', 'newadmin']
+  before_action :require_user, except: ['new', 'create', 'newadmin']
 
   def new
     @page_title = "Register"

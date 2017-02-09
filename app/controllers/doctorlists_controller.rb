@@ -1,5 +1,5 @@
 class DoctorlistsController < ApplicationController
-  before_filter :require_user
+  before_action :require_user
 
   def new
     @page_title = "Register To Hospital"
