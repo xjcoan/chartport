@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def new
     @page_title = "Register"
     @user = User.new
-    @user.admin = false
   end
 
   def create
@@ -56,7 +55,6 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @page_title = "Dashboard"
-    require_user
     @patients = @user.patients.all.paginate(:page => params[:page])
   end
 
@@ -82,7 +80,6 @@ class UsersController < ApplicationController
   def newadmin
     @page_title = "Register Admin"
     @user = User.new
-    @user.admin = true
   end
 
 
