@@ -16,11 +16,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore .DS_Store files on Mac
 .DS_Store
 
-config/secrets.yml
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+# Ignore Rails secrets.yml
+config/secrets.yml
