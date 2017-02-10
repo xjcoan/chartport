@@ -12,18 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20170120184150) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "doctorlists", force: :cascade do |t|
     t.integer  "hospital_id"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["hospital_id", "created_at"], name: "index_doctorlists_on_hospital_id_and_created_at", using: :btree
-    t.index ["hospital_id"], name: "index_doctorlists_on_hospital_id", using: :btree
-    t.index ["user_id", "created_at"], name: "index_doctorlists_on_user_id_and_created_at", using: :btree
-    t.index ["user_id"], name: "index_doctorlists_on_user_id", using: :btree
+    t.index ["hospital_id", "created_at"], name: "index_doctorlists_on_hospital_id_and_created_at"
+    t.index ["hospital_id"], name: "index_doctorlists_on_hospital_id"
+    t.index ["user_id", "created_at"], name: "index_doctorlists_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_doctorlists_on_user_id"
   end
 
   create_table "hospitals", force: :cascade do |t|
@@ -51,8 +48,8 @@ ActiveRecord::Schema.define(version: 20170120184150) do
     t.integer  "patient_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["patient_id", "created_at"], name: "index_medications_on_patient_id_and_created_at", using: :btree
-    t.index ["patient_id"], name: "index_medications_on_patient_id", using: :btree
+    t.index ["patient_id", "created_at"], name: "index_medications_on_patient_id_and_created_at"
+    t.index ["patient_id"], name: "index_medications_on_patient_id"
   end
 
   create_table "patient_notes", force: :cascade do |t|
@@ -62,10 +59,10 @@ ActiveRecord::Schema.define(version: 20170120184150) do
     t.integer  "patient_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["patient_id", "created_at"], name: "index_patient_notes_on_patient_id_and_created_at", using: :btree
-    t.index ["patient_id"], name: "index_patient_notes_on_patient_id", using: :btree
-    t.index ["user_id", "created_at"], name: "index_patient_notes_on_user_id_and_created_at", using: :btree
-    t.index ["user_id"], name: "index_patient_notes_on_user_id", using: :btree
+    t.index ["patient_id", "created_at"], name: "index_patient_notes_on_patient_id_and_created_at"
+    t.index ["patient_id"], name: "index_patient_notes_on_patient_id"
+    t.index ["user_id", "created_at"], name: "index_patient_notes_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_patient_notes_on_user_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -79,8 +76,8 @@ ActiveRecord::Schema.define(version: 20170120184150) do
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at", using: :btree
-    t.index ["user_id"], name: "index_patients_on_user_id", using: :btree
+    t.index ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,10 +90,4 @@ ActiveRecord::Schema.define(version: 20170120184150) do
     t.datetime "updated_at",        null: false
   end
 
-  add_foreign_key "doctorlists", "hospitals"
-  add_foreign_key "doctorlists", "users"
-  add_foreign_key "medications", "patients"
-  add_foreign_key "patient_notes", "patients"
-  add_foreign_key "patient_notes", "users"
-  add_foreign_key "patients", "users"
 end

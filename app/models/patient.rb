@@ -24,8 +24,8 @@ class Patient < ApplicationRecord
   end
 
   def find_age
-    dob_year = self.date_of_birth.to_date
+    dob = self.date_of_birth.to_date
     now = Time.now.utc.to_date
-    now.year - dob_year.year - ((now.month > dob_year.month || (now.month == dob_year.month && now.day >= self.dob_year.day)) ? 0 : 1)
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 end
