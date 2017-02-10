@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+  attr_encrypted_options.merge!(:encode => true)
+
+  attr_encrypted :name, key: Rails.application.secrets.encr_key
 
   has_many :patients
   has_many :doctorlists
@@ -9,5 +12,4 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
-  #attr_encrypted :name, key: ENV['256_encrypt_key']
 end

@@ -27,32 +27,41 @@ ActiveRecord::Schema.define(version: 20170120184150) do
   end
 
   create_table "hospitals", force: :cascade do |t|
-    t.string   "name"
-    t.string   "street_address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "encrypted_name"
+    t.string   "encrypted_name_iv"
+    t.string   "encrypted_street_address"
+    t.string   "encrypted_street_address_iv"
+    t.string   "encrypted_city"
+    t.string   "encrypted_city_iv"
+    t.string   "encrypted_state"
+    t.string   "encrypted_state_iv"
+    t.string   "encrypted_zipcode"
+    t.string   "encrypted_zipcode_iv"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "medications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "dosage"
-    t.string   "refills"
+    t.string   "encrypted_name"
+    t.string   "encrypted_name_iv"
+    t.string   "encrypted_dosage"
+    t.string   "encrypted_dosage_iv"
+    t.string   "encrypted_refills"
+    t.string   "encrypted_refills_iv"
     t.integer  "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["patient_id", "created_at"], name: "index_medications_on_patient_id_and_created_at", using: :btree
     t.index ["patient_id"], name: "index_medications_on_patient_id", using: :btree
   end
 
   create_table "patient_notes", force: :cascade do |t|
-    t.text     "note"
+    t.text     "encrypted_note"
+    t.text     "encrypted_note_iv"
     t.integer  "user_id"
     t.integer  "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["patient_id", "created_at"], name: "index_patient_notes_on_patient_id_and_created_at", using: :btree
     t.index ["patient_id"], name: "index_patient_notes_on_patient_id", using: :btree
     t.index ["user_id", "created_at"], name: "index_patient_notes_on_user_id_and_created_at", using: :btree
@@ -60,24 +69,28 @@ ActiveRecord::Schema.define(version: 20170120184150) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string   "name"
-    t.date     "date_of_birth"
-    t.string   "phone_number"
+    t.string   "encrypted_name"
+    t.string   "encrypted_name_iv"
+    t.string   "encrypted_date_of_birth"
+    t.string   "encrypted_date_of_birth_iv"
+    t.string   "encrypted_phone_number"
+    t.string   "encrypted_phone_number_iv"
     t.integer  "primary_care_physician"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_patients_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "encrypted_name"
+    t.string   "encrypted_name_iv"
     t.string   "email"
     t.boolean  "admin"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_foreign_key "doctorlists", "hospitals"

@@ -1,7 +1,8 @@
 class CreatePatientNotes < ActiveRecord::Migration[5.0]
   def change
     create_table :patient_notes do |t|
-      t.text :note
+      t.text :encrypted_note
+      t.text :encrypted_note_iv
       t.references :user, index: true, foreign_key: true
       t.references :patient, index: true, foreign_key: true
 

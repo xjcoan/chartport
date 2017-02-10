@@ -4,10 +4,11 @@
 
   <% @medications.each do |medication| %>
 
-  <div class="container">
-    <p>
-      <%= link_to medication.name, medication %>
-    </p>
+  <div class="hovertip"><%= link_to medication.name, medication %>
+    <span class="hovertiptext"><%= medication.name %><br />
+      Dosage: <%= medication.dosage %> <br />
+      Refills: <%= medication.refills %>
+     </span>
   </div>
 
   <% end %>

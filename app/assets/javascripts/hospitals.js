@@ -1,3 +1,9 @@
+var address = '';
+
+$(function(){
+  address = $('.address').html();
+});
+
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
@@ -9,7 +15,6 @@ function initMap() {
       }
 
       function geocodeAddress(geocoder, resultsMap) {
-        var address = gon.hospital.street_address + ", " + gon.hospital.city + ", " + gon.hospital.state;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);

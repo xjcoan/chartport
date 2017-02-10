@@ -1,4 +1,10 @@
 class Patient < ApplicationRecord
+  attr_encrypted_options.merge!(:encode => true)
+
+  attr_encrypted :name, key: Rails.application.secrets.encr_key
+  attr_encrypted :date_of_birth, key: Rails.application.secrets.encr_key
+  attr_encrypted :phone_number, key: Rails.application.secrets.encr_key
+
   belongs_to :user
   has_many :medications
   has_many :patient_notes
@@ -18,7 +24,8 @@ class Patient < ApplicationRecord
   end
 
   def find_age
+    dob_year = self.date_of_birth.to_date
     now = Time.now.utc.to_date
-    now.year - self.date_of_birth.year - ((now.month > self.date_of_birth.month || (now.month == self.date_of_birth.month && now.day >= self.date_of_birth.day)) ? 0 : 1)
+    now.year - dob_year.year - ((now.month > dob_year.month || (now.month == dob_year.month && now.day >= self.dob_year.day)) ? 0 : 1)
   end
 end
