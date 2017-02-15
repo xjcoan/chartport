@@ -1,7 +1,7 @@
 <div class="container">
   <div class="jumbotron">
     <h1><%= @user.name %></h1>
-    <p>Medlog join date: <%= @user.created_at.strftime("%b %e, %Y") %></p>
+    <p>ChartPort MD join date: <%= @user.created_at.strftime("%b %e, %Y") %></p>
   </div>
   <% if current_user.admin %>
   <p><%= link_to "JSON Export", controller: 'users', action: 'show', id: @user.id, format: 'json' %></p>

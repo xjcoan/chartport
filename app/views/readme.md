@@ -1,7 +1,7 @@
 #Style Guide
-Currently, [Medlog](http://github.com/xcoan/medlog) makes extensive use of [Bootstrap](http://http://getbootstrap.com/).
+Currently, [ChartPort MD](http://github.com/xcoan/ChartPort MD) makes extensive use of [Bootstrap](http://http://getbootstrap.com/).
 
-These are just some guidelines to make Medlog pages look standardized.
+These are just some guidelines to make ChartPort MD pages look standardized.
 
 ## General
 All pages (with the exception of views form the Pages_Controller) are styled using `<div class="container">`

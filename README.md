@@ -1,9 +1,9 @@
-#xcoan/medlog
+#xcoan/ChartPortMD
 
-"MedLog Service" (WIP name)
+ChartPort MD
 
 ### What is it?
-In short, MedLog exists as a cloud-based service for healthcare professionals to have easy access to patient records.
+In short, ChartPort MD exists as a cloud-based service for healthcare professionals to have easy access to patient records.
 
 Planned features include the ability for records to easily be transferred between healthcare facilities, records being exported for internal user, and the ability to prescribe mediations to patients and send those prescriptions to a chosen pharmacy.
 
