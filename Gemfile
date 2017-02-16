@@ -37,6 +37,9 @@ gem "will_paginate"
 # encryption
 gem "attr_encrypted", "~> 3.0.0"
 
+# font awesome to make icons look better
+gem "font-awesome-rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -1,5 +1,10 @@
 <% if @doctorlists.any? %>
 <div class="container">
+  <div class="jumbotron">
+    <h1><%= @user.name %>'s Hospital Registrations</h1>
+  </div>
+</div>
+<div class="container">
 
   <% @doctorlists.each do |doctorlist| %>
   <p>

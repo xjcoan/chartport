@@ -8,7 +8,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/" style="border-right: 1px solid;">ChartPort MD</a>
+      <a class="navbar-brand" href="/" style="border-right: 1px solid;">ChartPort MD
+        <i class="fa fa-heartbeat" aria-hidden="true"></i></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,6 +18,7 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users
+            <i class="fa fa-user-md" aria-hidden="true"></i>
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Index", users_path %></li>
@@ -25,6 +27,7 @@
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Patients
+          <i class="fa fa-medkit" aria-hidden="true"></i>
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Index/Search", controller: :patients, action: :adminindex %></li>
@@ -33,6 +36,7 @@
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hospitals
+          <i class="fa fa-hospital-o" aria-hidden="true"></i>
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Search Hospitals", hospitals_path %></li>

@@ -1,16 +1,6 @@
 <% if @context == "user" %>
-  <div class="container">
-    <div class="jumbotron">
-      <h1><%= @user.name %>'s Hospital Registrations</h1>
-    </div>
-  </div>
   <%= render "doctorlists/userindex" %>
 <% elsif @context == "hospital" %>
-  <div class="container">
-    <div class="jumbotron">
-      <h1><%= @hospital.name %> Doctor Registry</h1>
-    </div>
-  </div>
   <%= render "doctorlists/hospitalindex" %>
 <% elsif @context == "admin" %>
   <%= render "doctorlists/adminindex" %>

@@ -8,7 +8,7 @@
       <div class="page-header">
         <h1>Users</h1>
       </div>
-      <p>There are <%= User.count %> Registered Users.</p>
+      <p>There are <%= link_to "#{User.count} registered Users.", users_path %></p>
     </div>
   </div>
   <div class="col-md-3">
@@ -16,7 +16,7 @@
       <div class="page-header">
         <h1>Patients</h1>
       </div>
-      <p>There are <%= Patient.count %> registered Patients.</p>
+      <p>There are <%= link_to "#{Patient.count} registered Patients.", patients_path %></p>
     </div>
   </div>
   <div class="col-md-3">
@@ -24,7 +24,7 @@
       <div class="page-header">
         <h1>Hospitals</h1>
       </div>
-      <p>There are <%= Hospital.count %> registered Hospitals</p>
+      <p>There are <%= link_to "#{Hospital.count} registered Hospitals.", hospitals_path %></p>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
       <div class="page-header">
         <h1>Doctor-Hospital Registrations</h1>
       </div>
-      <p>There are <%= Doctorlist.count %> registered associtations.</p>
+      <p>There are <%= link_to "#{Doctorlist.count} registered associtations.", doctorlists_path(context: "admin") %></p>
     </div>
   </div>
 </div>
