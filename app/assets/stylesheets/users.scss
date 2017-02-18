@@ -4,18 +4,9 @@
 .dashpanel {
   border: 1px solid;
   overflow: hidden;
-  min-height: 200px;
+  min-height: 220px;
+  max-height: 220px;
 }
-
-.nav>li>a:hover {
-  background-color: #1967be !important;
-}
-
-.dropdown-menu {
-  li a{
-    color: black !important;
-  }
-  li a:hover {
-    color: white !important;
-  }
+.dashpanel:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
