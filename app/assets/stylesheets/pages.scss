@@ -6,20 +6,14 @@ body {
   text-align: center;
 }
 
-.carousel{
-  .carousel-inner {
-    .item {
-      height: 700px;
-      img {
-        height: 700px;
-        display: block;
-        margin: auto;
-      }
-      .container-fluid {
-        text-align: center;
-        vertical-align: middle;
-        padding-top: 300px;
-      }
-    }
-  }
+#top {
+  height: 50vh;
+}
+
+#mission {
+  height: 50vh;
+}
+
+#features {
+  height: 50vh;
 }

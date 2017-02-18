@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   get 'error' => 'pages#errorpage'
 
-  get 'about' => 'pages#about'
-
   get 'signup' => 'users#new'
 
   get 'registeradmin' => 'users#newadmin'

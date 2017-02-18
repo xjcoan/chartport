@@ -9,6 +9,7 @@ class DoctorlistsController < ApplicationController
   end
 
   def create
+    @page_title = "Register To Hospital"
     @doctorlist = Doctorlist.new(doctorlist_params)
 
     if @doctorlist.save

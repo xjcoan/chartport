@@ -7,6 +7,7 @@ class HospitalsController < ApplicationController
   end
 
   def create
+    @page_title = "New Hospital"
     @hospital = Hospital.new(hospital_params)
 
     if @hospital.save
@@ -17,9 +18,11 @@ class HospitalsController < ApplicationController
   end
 
   def edit
-    @page_title = "Edit Hospital"
     if Hospital.exists?(params[:id])
       @hospital = Hospital.find(params[:id])
+      @page_title = "Edit #{@hospital.name}"
+    else
+      redirect_to controller: 'pages', action: 'errorpage'
     end
   end
 
