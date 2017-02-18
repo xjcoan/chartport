@@ -39,6 +39,9 @@
     <%= f.password_field :password %>
   </p>
 
-  <%= f.submit "Register" %>
+  <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+   Register <i class="fa fa-plus"></i>
+  <% end %>
+  
   <% end %>
 </div>

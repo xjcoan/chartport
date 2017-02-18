@@ -6,7 +6,8 @@
     <br />
     <% if current_user.admin %>
     <small><%= link_to "Delete This Hospital", hospital_path(@hospital), method: :delete,
-        data: { confirm: 'Are you sure you want to delete this hospital?' } %></small>
+        data: { confirm: 'Are you sure you want to delete this hospital?' } %></small><br />
+    <small><%= link_to "Edit Hospital", edit_hospital_path(@hospital) %></small>
     <% end %>
   </div>
   <% if !current_user.admin %>

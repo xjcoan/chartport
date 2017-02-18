@@ -27,7 +27,7 @@ class HospitalsController < ApplicationController
   end
 
   def update
-    @hospital = Hosptial.find(params[:id])
+    @hospital = Hospital.find(params[:id])
     if @hospital.update(hospital_params)
       redirect_to hospital_path(@hospital)
     else
