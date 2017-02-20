@@ -9,7 +9,7 @@
       <span class="hovertiptext"><%= patient.name %><br />
         Physician: <%= User.find(patient.user_id).name %><br />
         Age: <%= patient.find_age %> <br />
-        Phone: <%= patient.phone_number %>
+        Phone: <%= number_to_phone(patient.phone_number, area_code: true) %>
        </span>
     </div>
     <br />

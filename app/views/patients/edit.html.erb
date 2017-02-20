@@ -14,7 +14,7 @@
   <div class="page-header">
     <h3>Patient Phone Number:</h3>
   </div>
-  <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone(@patient.phone_number) %>
+  <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone(@patient.phone_number, area_code: true) %>
 </div>
 <br />
 

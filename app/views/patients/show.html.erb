@@ -36,7 +36,7 @@
       <div class="page-header">
         <h4>Patient Phone Number:</h4>
       </div>
-      <p><%= number_to_phone(@patient.phone_number) %></p>
+      <p><%= number_to_phone(@patient.phone_number, area_code: true) %></p>
     </div>
   </div>
 </div>
@@ -45,7 +45,8 @@
   <div class="page-header">
     <h4>Patient Notes</h4>
   </div>
-  <button class="btn btn-default"><%= link_to "New Note", new_patient_note_path(:patient_id => @patient.id) %></button>
+  <button class="btn btn-default"><%= link_to "New Note", new_patient_note_path(:patient_id => @patient.id) %>
+  <i class="fa fa-plus"></i></button>
   <%= render "patient_notes/index" %>
 </div>
 
@@ -55,7 +56,8 @@
     <h4>Medications</h4>
   </div>
   <% if @patient.user_id == @current_user.id && !current_user.admin %>
-  <button class="btn-default"><%= link_to "Add Prescription", new_medication_path(:patient_id => @patient.id) %></button>
+  <button class="btn-default"><%= link_to "Add Prescription", new_medication_path(:patient_id => @patient.id) %>
+  <i class="fa fa-medkit"></i></button>
   <% end %>
   <% if @patient.medications.any? %>
     <%= render 'medications/medicationindex' %>

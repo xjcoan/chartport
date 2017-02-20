@@ -36,7 +36,7 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @page_title = @patient.name + " record"
-    @patient_notes = @patient.patient_notes
+    @patient_notes = @patient.patient_notes.paginate(:page => params[:page], :per_page => 5)
 
     respond_to do | f |
       f.html {
@@ -52,11 +52,11 @@ class PatientsController < ApplicationController
 
   def index
     @page_title = "Patients Index"
-    @patients = current_user.patients.all.paginate(:page => 1, :per_page => 10)
+    @patients = current_user.patients.all.paginate(:page => params[:page], :per_page => 10)
     if params[:search]
-      @patients = current_user.patients.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+      @patients = current_user.patients.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else
-      @patients = current_user.patients.all.order("created_at DESC")
+      @patients = current_user.patients.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do | f |
@@ -71,11 +71,11 @@ class PatientsController < ApplicationController
 
   def adminindex
     @page_title = "Patients Index"
-    @patients = Patient.all.paginate(:page => 1, :per_page => 10)
+    @patients = Patient.all.paginate(:page => params[:page], :per_page => 10)
     if params[:search]
-      @patients = Patient.search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+      @patients = Patient.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     else
-      @patients = Patient.all.order("created_at DESC")
+      @patients = Patient.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do | f |

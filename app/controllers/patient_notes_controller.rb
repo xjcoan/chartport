@@ -20,6 +20,42 @@ class PatientNotesController < ApplicationController
     end
   end
 
+  def edit
+    @page_title = "Edit Note"
+    if PatientNote.exists?(params[:id])
+      @patient_note = PatientNote.find(params[:id])
+      @patient = Patient.find(@patient_note.patient_id)
+      @user = current_user
+    end
+  end
+
+  def show
+    @page_title = "Show Note"
+    if PatientNote.exists?(params[:id])
+      @patient_note = PatientNote.find(params[:id])
+      @patient = Patient.find(@patient_note.patient_id)
+      @user = User.find(@patient_note.user_id)
+    end
+  end
+
+  def update
+    @patient_note = PatientNote.find(params[:id])
+    @patient = Patient.find(params[:patient_id])
+    if @patient_note.update(patient_note_params)
+      redirect_to patient_path(@patient)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @patient_note = PatientNote.find(params[:id])
+    @patient = Patient.find(@patient_note.patient_id)
+    @patient_note.destroy
+
+    redirect_to patient_path(@patient)
+  end
+
   private
 
   def patient_note_params

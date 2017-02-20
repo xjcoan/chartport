@@ -1,33 +1,37 @@
 <% if @patient_notes.any? %>
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-3">
-    <h4>Date Created</h4>
-  </div>
-  <div class="col-sm-4">
-    <h4>Note</h4>
-  </div>
-  <div class="col-sm-3">
-    <h4>Physician</h4>
-  </div>
-  <div class="col-sm-1"></div>
-</div>
-  <% @patient_notes.each do |patient_note| %>
+  <% @patient_notes.reverse_each do |patient_note| %>
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-3">
-        <%= patient_note.created_at.strftime('%B %d, %Y') %>
+        <h4>Date Created</h4>
+        <p>
+          <%= patient_note.created_at.strftime('%B %d, %Y') %>
+        </p>
       </div>
       <div class="col-sm-4">
-        <%= patient_note.note %>
+        <h4>Note</h4>
+        <p>
+          <%= truncate(patient_note.note, length: 75) %>
+          <small><%= link_to "Show Full", patient_note_path(patient_note) %></small>
+        </p>
       </div>
       <div class="col-sm-3">
-        <%= link_to User.find(patient_note.user_id).name, user_path(User.find(patient_note.user_id)) %>
+        <h4>Physician</h4>
+        <p>
+          <%= link_to User.find(patient_note.user_id).name, user_path(User.find(patient_note.user_id)) %>
+        </p>
       </div>
       <div class="col-sm-1"></div>
+      <% if User.find(@patient.user_id) == current_user.id || User.find(@patient.primary_care_physician) == current_user %>
+      <h4>Actions</h4>
+      <small><%= link_to "Edit", edit_patient_note_path(patient_note) %></small><br />
+      <small><%= link_to "Delete", patient_note_path(patient_note), method: :delete %></small><br />
+      <% end %>
     </div>
   <% end %>
+<p>
+  <%= will_paginate @patient_notes %>
+</p>
 <% else %>
-
   <h5><%= @patient.name %> Currently has no associated notes.</h5>
 <% end %>

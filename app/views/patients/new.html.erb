@@ -34,7 +34,7 @@
     <h3><%= f.label "Phone Number" %></h3>
   </div>
   <p>
-    <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone('1112222') %>
+    <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone('2221112222', area_code: true) %>
   </p>
 
   <%= f.text_area :primary_care_physician, value: @user.id, style: "display: none;"  %>

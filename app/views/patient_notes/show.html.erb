@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= "#{@patient.name} Note" %></h1>
+  </div>
+
+  <div class="page-header">
+    <h2>Note Text:</h2>
+  </div>
+  <p>
+    <%= @patient_note.note %>
+  </p>
+
+  <div class="page-header">
+    <h2>Date:</h2>
+  </div>
+  <p>
+    <%= @patient_note.created_at.strftime("%B %d, %Y") %>
+  </p>
+
+  <div class="page-header">
+    <h2>Submitted by: </h2>
+  </div>
+  <p>
+    <%= link_to @user.name, user_path(@user) %>
+  </p>
+
+  <%= link_to "Return to Patient", patient_path(@patient) %>
+</div>

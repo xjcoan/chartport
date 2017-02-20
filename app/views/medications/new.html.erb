@@ -38,7 +38,9 @@
 
   <p>
     <%= hidden_field_tag(:patient_id, @patient.id) %>
-    <%= f.submit "Submit Medication" %>
+    <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+     Submit Medication <i class="fa fa-plus"></i>
+    <% end %>
   </p>
   <% end %>
 </div>

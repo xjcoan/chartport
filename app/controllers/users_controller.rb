@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def index
     @page_title = "Users Index"
-    @users = User.all.paginate(:page => 1, :per_page => 10)
+    @users = User.all.paginate(:page => params[:page], :per_page => 10)
     respond_to do | f |
       f.html {
       }
