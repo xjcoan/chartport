@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
         render request.format.to_sym => @patient
       }
 
-      @medications = @patient.medications.all
+      @medications = @patient.medications.all.paginate(:page => params[:page], :per_page => 5)
     end
   end
 
@@ -97,16 +97,16 @@ class PatientsController < ApplicationController
 
   def medicationindex
     @patient = Patient.find(params[:id])
-    @medications = @patient.medications.all
+    @medications = @patient.medications.paginate(:page => params[:page], :per_page => 5)
   end
 
   def importsearch
     @page_title = "Patients Index"
-    @patients = Patient.where.not(:user_id => current_user)
+    @patients = Patient.where.not(:user_id => current_user).paginate(:page => params[:page])
     if params[:search]
       @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
     else
-      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC")
+      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC").paginate(:page => params[:page])
     end
   end
 

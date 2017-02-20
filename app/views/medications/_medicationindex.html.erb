@@ -2,7 +2,7 @@
 
 <br />
 
-  <% @medications.each do |medication| %>
+  <% @medications.reverse_each do |medication| %>
 
   <div class="hovertip"><%= link_to medication.name, medication %>
     <span class="hovertiptext"><%= medication.name %><br />
@@ -12,4 +12,6 @@
   </div>
 
   <% end %>
+
+  <%= will_paginate @medications %>
 <% end %>
