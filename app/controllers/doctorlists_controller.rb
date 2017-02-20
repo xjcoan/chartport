@@ -24,7 +24,7 @@ class DoctorlistsController < ApplicationController
     if @context == "user"
       @user = User.find(params[:given_id])
       @page_title = "#{@user.name} Hospital Registrations"
-      @doctorlists = @user.doctorlists.all.paginate(:page => params[:page], :per_page => 10)
+      @doctorlists = @user.doctorlists.all
     elsif @context == "hospital"
       @page_title = "Registered Doctors"
       @hospital = Hospital.find(params[:given_id])
@@ -34,7 +34,7 @@ class DoctorlistsController < ApplicationController
         redirect_to root_path
       end
       @page_title = "Hospital Registrations"
-      @doctorlists = Doctorlist.all.paginate(:page => params([:page]), :per_page => 10)
+      @doctorlists = Doctorlist.all
     end
   end
 

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def index
     @page_title = "Users Index"
-    @users = User.all.paginate(:page => params[:page], :per_page => 10)
+    @users = User.all
     respond_to do | f |
       f.html {
       }
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @page_title = "Dashboard"
-    @patients = @user.patients.all.paginate(:page => params[:page])
+    @patients = @user.patients.all
   end
 
   def show

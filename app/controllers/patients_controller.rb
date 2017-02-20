@@ -36,7 +36,7 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @page_title = @patient.name + " record"
-    @patient_notes = @patient.patient_notes.paginate(:page => params[:page], :per_page => 5)
+    @patient_notes = @patient.patient_notes
 
     respond_to do | f |
       f.html {
@@ -46,17 +46,17 @@ class PatientsController < ApplicationController
         render request.format.to_sym => @patient
       }
 
-      @medications = @patient.medications.all.paginate(:page => params[:page], :per_page => 5)
+      @medications = @patient.medications.all
     end
   end
 
   def index
     @page_title = "Patients Index"
-    @patients = current_user.patients.all.paginate(:page => params[:page], :per_page => 10)
+    @patients = current_user.patients.all
     if params[:search]
-      @patients = current_user.patients.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @patients = current_user.patients.search(params[:search]).order("created_at DESC")
     else
-      @patients = current_user.patients.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @patients = current_user.patients.all.order("created_at DESC")
     end
 
     respond_to do | f |
@@ -71,11 +71,11 @@ class PatientsController < ApplicationController
 
   def adminindex
     @page_title = "Patients Index"
-    @patients = Patient.all.paginate(:page => params[:page], :per_page => 10)
+    @patients = Patient.all
     if params[:search]
-      @patients = Patient.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @patients = Patient.search(params[:search]).order("created_at DESC")
     else
-      @patients = Patient.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @patients = Patient.all.order("created_at DESC")
     end
 
     respond_to do | f |
@@ -97,16 +97,16 @@ class PatientsController < ApplicationController
 
   def medicationindex
     @patient = Patient.find(params[:id])
-    @medications = @patient.medications.paginate(:page => params[:page], :per_page => 5)
+    @medications = @patient.medications
   end
 
   def importsearch
     @page_title = "Patients Index"
-    @patients = Patient.where.not(:user_id => current_user).paginate(:page => params[:page])
+    @patients = Patient.where.not(:user_id => current_user)
     if params[:search]
-      @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC").paginate(:page => params[:page])
+      @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC")
     else
-      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC").paginate(:page => params[:page])
+      @patients = Patient.where.not(:user_id => current_user).order("created_at DESC")
     end
   end
 

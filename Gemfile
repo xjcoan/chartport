@@ -31,8 +31,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# pagination
-gem "will_paginate"
 
 # encryption
 gem "attr_encrypted", "~> 3.0.0"

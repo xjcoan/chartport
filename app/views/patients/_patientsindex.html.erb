@@ -1,7 +1,5 @@
 <% if @patients.any? %>
 
-<%= will_paginate @patients %>
-
   <% if @patients.where(updated_at: (Time.now - 24.hours)..Time.now).any? %>
 
     <% @patients.where(updated_at: (Time.now - 24.hours)..Time.now).each do |patient| %>

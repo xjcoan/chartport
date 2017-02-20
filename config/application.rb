@@ -12,6 +12,5 @@ module MedicalApi
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    WillPaginate.per_page = 10
   end
 end
