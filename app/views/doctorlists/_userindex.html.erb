@@ -1,10 +1,4 @@
 <% if @doctorlists.any? %>
-<div class="container">
-  <div class="jumbotron">
-    <h1><%= @user.name %>'s Hospital Registrations</h1>
-  </div>
-</div>
-<div class="container">
 
   <% @doctorlists.each do |doctorlist| %>
   <p>
@@ -16,11 +10,9 @@
   </p>
   <hr />
   <% end %>
-</div>
 
 <% else %>
-<div class="container">
-    <h3>No Registrations.</h3>
+  <h3>No Registrations.</h3>
   <% if @user.id == current_user.id %>
   <p>
     You are not currently registered to any hospitals.
@@ -34,5 +26,4 @@
     This professional is not currently registered to any hospitals in ChartPort.
   </p>
   <% end %>
-</div>
 <% end %>
