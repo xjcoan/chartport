@@ -12,7 +12,9 @@
         <h4>Note</h4>
         <p>
           <%= truncate(patient_note.note, length: 75) %>
+          <% if patient_note.note.length >= 75 %>
           <small><%= link_to "Show Full", patient_note_path(patient_note) %></small>
+          <% end %>
         </p>
       </div>
       <div class="col-sm-3">
