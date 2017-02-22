@@ -10,7 +10,10 @@
       Refills: <%= medication.refills %>
      </span>
   </div>
+  <br />
 
   <% end %>
+
+  <%= will_paginate @medications %>
 
 <% end %>

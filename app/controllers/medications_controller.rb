@@ -13,6 +13,8 @@ class MedicationsController < ApplicationController
     @medication = @patient.medications.new(medication_params)
     if @medication.save
       redirect_to patient_path(@patient)
+      @patient = Patient.find(@medication.patient_id)
+      @patient.touch
     else
       render 'new'
     end
@@ -34,6 +36,8 @@ class MedicationsController < ApplicationController
   def update
     @medication = Medication.find(params[:id])
     if @medication.update(medication_params)
+      @patient = Patient.find(@medication.patient_id)
+      @patient.touch
       redirect_to medication_path(@medication)
     else
       render 'edit'
@@ -48,6 +52,7 @@ class MedicationsController < ApplicationController
   def destroy
     @medication = Medication.find(params[:id])
     @patient = Patient.find(@medication.patient_id)
+    @patient.touch
     @medication.destroy
 
     redirect_to patient_path(@patient)

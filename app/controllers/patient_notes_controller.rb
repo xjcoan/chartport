@@ -14,6 +14,7 @@ class PatientNotesController < ApplicationController
     @user = current_user
     @patient_note = @patient.patient_notes.new(patient_note_params)
     if @patient_note.save
+      @patient.touch
       redirect_to patient_path(@patient)
     else
       render 'new'
@@ -42,6 +43,7 @@ class PatientNotesController < ApplicationController
     @patient_note = PatientNote.find(params[:id])
     @patient = Patient.find(params[:patient_id])
     if @patient_note.update(patient_note_params)
+      @patient.touch
       redirect_to patient_path(@patient)
     else
       render 'edit'
@@ -52,6 +54,7 @@ class PatientNotesController < ApplicationController
     @patient_note = PatientNote.find(params[:id])
     @patient = Patient.find(@patient_note.patient_id)
     @patient_note.destroy
+    @patient.touch
 
     redirect_to patient_path(@patient)
   end

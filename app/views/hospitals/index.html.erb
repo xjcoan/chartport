@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <% @hospitals.each do |hospital| %>
+  <% @hospitals.reverse_each do |hospital| %>
 
   <div class="hovertip"><p><%= link_to hospital.name, hospital %></p>
     <span class="hovertiptext"><%= hospital.name %><br />
@@ -33,6 +33,8 @@
   <br />
 
   <% end %>
+
+  <%= will_paginate @hospitals %>
 
 <% else %>
 

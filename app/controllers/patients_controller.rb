@@ -36,7 +36,8 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @page_title = @patient.name + " record"
-    @patient_notes = @patient.patient_notes
+    @patient_notes = @patient.patient_notes.paginate(:page => params[:page], :per_page => 15)
+    @medications = @patient.medications.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do | f |
       f.html {
@@ -45,8 +46,6 @@ class PatientsController < ApplicationController
       f.any(:xml, :json) {
         render request.format.to_sym => @patient
       }
-
-      @medications = @patient.medications.all
     end
   end
 
