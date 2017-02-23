@@ -38,6 +38,8 @@
 
   <% end %>
 
+  <%= will_paginate @patients %>
+
 <% else %>
 
   <% if !params[:search] %>
@@ -55,9 +57,6 @@
       <h3>Search Results</h3>
     </div>
     <p>No patients could be found with the search "<%= params[:search] %>".</p>
-    <%= link_to "Return to Search", hospitals_path %>
-    <br />
-    <%= link_to "Dashboard", dashboard_path %>
   </div>
 
   <% end %>

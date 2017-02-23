@@ -58,9 +58,10 @@ class HospitalsController < ApplicationController
     @page_title = "Hospitals Index"
     @hospitals = Hospital.paginate(:page => params[:page], :per_page => 50)
     if params[:search]
-      @hospitals = Hospital.where("name ILIKE ?", params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
-    else
-      @hospitals = Hospital.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      @hospitals = Hospital.where(id: params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      if params[:search].blank?
+        @hospitals = Hospital.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      end
     end
 
     respond_to do | f |

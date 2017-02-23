@@ -13,13 +13,4 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
-
-  # Search function on index
-  def search(search)
-    where("#{self.get_name} ILIKE ?", "%#{search}%").all
-  end
-
-  def self.get_name
-    self.name
-  end
 end

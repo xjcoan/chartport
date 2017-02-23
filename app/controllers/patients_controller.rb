@@ -51,12 +51,7 @@ class PatientsController < ApplicationController
 
   def index
     @page_title = "Patients Index"
-    @patients = current_user.patients.all
-    if params[:search]
-      @patients = current_user.patients.search(params[:search]).order("created_at DESC")
-    else
-      @patients = current_user.patients.all.order("created_at DESC")
-    end
+    @patients = current_user.patients.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do | f |
       f.html {
@@ -70,12 +65,7 @@ class PatientsController < ApplicationController
 
   def adminindex
     @page_title = "Patients Index"
-    @patients = Patient.all
-    # if params[:search]
-    #   @patients = Patient.search(params[:search]).order("created_at DESC")
-    # else
-    #   @patients = Patient.all.order("created_at DESC")
-    # end
+    @patients = Patient.paginate(:page => params[:page], :per_page => 30)
 
     respond_to do | f |
       f.html {
@@ -103,7 +93,7 @@ class PatientsController < ApplicationController
     @page_title = "Patients Index"
     @patients = Patient.where.not(:user_id => current_user)
     if params[:search]
-      @patients = Patient.where.not(:user_id => current_user).search(params[:search]).order("created_at DESC")
+      @patients = Patient.where.not(:user_id => current_user).where(:id => params[:search]).order("created_at DESC")
     else
       @patients = Patient.where.not(:user_id => current_user).order("created_at DESC")
     end
