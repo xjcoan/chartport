@@ -31,7 +31,8 @@ class UsersController < ApplicationController
 
   def index
     @page_title = "Users Index"
-    @users = User.paginate(:page => params[:page], :per_page => 20)
+    @users = User.paginate(:page => params[:page], :per_page => 30)
+    @patients = Patient.all
     respond_to do | f |
       f.html {
       }
