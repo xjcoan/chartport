@@ -71,11 +71,11 @@ class PatientsController < ApplicationController
   def adminindex
     @page_title = "Patients Index"
     @patients = Patient.all
-    if params[:search]
-      @patients = Patient.search(params[:search]).order("created_at DESC")
-    else
-      @patients = Patient.all.order("created_at DESC")
-    end
+    # if params[:search]
+    #   @patients = Patient.search(params[:search]).order("created_at DESC")
+    # else
+    #   @patients = Patient.all.order("created_at DESC")
+    # end
 
     respond_to do | f |
       f.html {

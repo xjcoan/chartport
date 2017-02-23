@@ -1,8 +1,4 @@
-var address = '';
-
-$(function(){
-  address = $('.address').html();
-});
+var address = gon.street + ', ' + gon.city + ', ' + gon.state + ', ' + gon.zipcode;
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
