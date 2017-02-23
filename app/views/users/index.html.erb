@@ -9,6 +9,12 @@
 
   <div class="container">
 
+  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+  <% end %>
+  <br />
+
     <div class="page-header">
       <h3>Search Results</h3>
     </div>

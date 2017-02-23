@@ -57,6 +57,12 @@ class HospitalsController < ApplicationController
   def index
     @page_title = "Hospitals Index"
     @hospitals = Hospital.paginate(:page => params[:page], :per_page => 50)
+    if params[:search]
+      @hospitals = Hospital.where(id: params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      if params[:search].blank?
+        @hospitals = Hospital.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      end
+    end
 
     respond_to do | f |
       f.html {

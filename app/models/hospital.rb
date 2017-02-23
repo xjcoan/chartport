@@ -12,11 +12,6 @@ class Hospital < ApplicationRecord
   has_many :doctorlists
   has_many :users, :through => :doctorlists
 
-  def get_name
-    self.name
-  end
-
-
   # Getter methods. Use to decrypt data for google maps
   def get_street
     self.street_address

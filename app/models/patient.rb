@@ -13,7 +13,7 @@ class Patient < ApplicationRecord
   validates :name, presence: true
   validates :date_of_birth, presence: true
   validates :phone_number, presence: true
-
+  
   # transfer active user/doctor to new user
   def transfer(user)
     self.update(:user_id => user.id)

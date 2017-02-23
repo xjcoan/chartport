@@ -1,19 +1,10 @@
-<div class="jumbotron">
-  <h1>All Patients Index</h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1>All Patients Index</h1>
+  </div>
 </div>
 
 <% if @patients.any? %>
-
-<div class="container">
-  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
-      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
-  <% end %>
-
-  <br />
-</div>
-
-<br />
 
   <div class="container">
     <div class="page-header">
@@ -34,13 +25,30 @@
 
   <% end %>
 
+  <%= will_paginate @patients %>
+
+
+<% else %>
+  <% if params[:search] %>
+
+    <div class="container">
+      <div class="page-header">
+        <h3>Search Results</h3>
+      </div>
+      <p>No patients could be found with the search "<%= params[:search] %>".</p>
+    </div>
 
 <% else %>
 
-<div class="container">
-  <div class="page-header">
-    <h3>Search Results</h3>
-  </div>
-  <p>No patients could be found with the search "<%= params[:search] %>".</p>
-</div>
+    <div class="container">
+      <div class="page-header">
+        <h3>No Patients</h3>
+      </div>
+      <p>
+        No patients are registered in ChartPort yet!
+      </p>
+    </div>
+
+  <% end %>
+
 <% end %>
