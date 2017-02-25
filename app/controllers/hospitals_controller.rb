@@ -56,11 +56,11 @@ class HospitalsController < ApplicationController
 
   def index
     @page_title = "Hospitals Index"
-    @hospitals = Hospital.paginate(:page => params[:page], :per_page => 50)
+    @hospitals = Hospital.paginate(:page => params[:page], :per_page => 30)
     if params[:search]
-      @hospitals = Hospital.where(id: params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      @hospitals = Hospital.where(id: params[:search]).paginate(:page => params[:page], :per_page => 30)
       if params[:search].blank?
-        @hospitals = Hospital.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+        @hospitals = Hospital.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
       end
     end
 

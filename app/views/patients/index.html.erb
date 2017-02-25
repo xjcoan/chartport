@@ -7,8 +7,12 @@
 <% if @patients.any? %>
 
 <div class="container">
+  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+  <% end %>
 
-  <button class="btn btn-default"><%= link_to "New Patient Entry", new_patient_path %></button>
+  <%= button_to "New Patient Entry", new_patient_path, method: 'get', :class => "btn btn-default" %>
 </div>
 
 <br />

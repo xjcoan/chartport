@@ -4,25 +4,68 @@
   </div>
 </div>
 
-<div class="container">
-  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
-      <br />
-      <br />
-      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+<% if @patients.any? %>
+
+  <% if params[:search] %>
+
+    <div class="container">
+      <%= form_tag(importui_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
+          <br />
+          <br />
+          <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+      <% end %>
+      <hr />
+    </div>
+
+    <div class="container">
+      <h3>Results:</h3>
+
+    <% @patients.each do |patient| %>
+
+      <p>
+        <%= link_to patient.name, patient %>    <br />
+          <small><%= User.find(patient.user_id).name %></small>
+      </p>
+    </div>
+
+    <% end %>
+
+  <% else %>
+
+  <div class="container">
+    <%= form_tag(importui_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
+        <br />
+        <br />
+        <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+    <% end %>
+    <hr />
+  </div>
+
+  <div class="container">
+    <h3>Patients Available for Import</h3>
+
+  <% @patients.each do |patient| %>
+
+    <p>
+      <%= link_to patient.name, patient %>    <br />
+        <small><%= User.find(patient.user_id).name %></small>
+    </p>
+  </div>
+
   <% end %>
-  <hr />
-</div>
 
-<div class="container">
-  <h3>Results:</h3>
+  <% end %>
 
-<% @patients.each do |patient| %>
 
-  <p>
-    <%= link_to patient.name, patient %>    <br />
-      <small><%= User.find(patient.user_id).name %></small>
-  </p>
-</div>
+
+<% else %>
+  <div class="container">
+    <div class="page-header">
+      <h3>No Patients</h3>
+    </div>
+    <p>No Patients were found.</p>
+  </div>
 
 <% end %>

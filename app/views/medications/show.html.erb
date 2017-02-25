@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1><%= @patient.name %>'s <%= @medication.name %> Perscription</h1>
     <hr />
-    <button class="btn btn-default"><%= link_to "Return to Patient", patient_path(@patient) %></button>
+    <%= button_to "Return to Patient", patient_path(@patient), method: :get, :class => "btn btn-default" %>
   </div>
 
   <div class="page-header">
@@ -17,7 +17,7 @@
 
   <br />
   <% if @patient.user_id == current_user.id %>
-  <button class="btn btn-default"><%= link_to "Edit Prescription", edit_medication_path(@medication) %></button>
-  <button class="btn btn-default"><%= link_to "Delete Medication", medication_path(@medication), method: :delete %></button>
+  <%= button_to "Edit Prescription", edit_medication_path(@medication), method: :get, :class => "btn btn-default" %>
+  <%= button_to "Delete Medication", medication_path(@medication), method: 'delete', :class => "btn btn-default" %>
   <% end %>
 </div>

@@ -12,7 +12,7 @@
     </p>
     <% end %>
     <% if @patient.user_id == current_user.id %>
-      <button class="btn btn-default"><%= link_to "Edit Patient", edit_patient_path(@patient) %></button>
+    <%= button_to "Edit Patient", edit_patient_path(@patient), method: 'get', :class => "btn btn-default" %>
     <% end %>
     <% if current_user.admin %>
       <button class="btn btn-default"><%= link_to 'Export JSON', controller: 'patients', action: 'show', format: 'json' %></button>

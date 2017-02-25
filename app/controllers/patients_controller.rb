@@ -52,6 +52,12 @@ class PatientsController < ApplicationController
   def index
     @page_title = "Patients Index"
     @patients = current_user.patients.paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+      @patients = current_user.patients.where(id: params[:search]).paginate(:page => params[:page], :per_page => 30)
+      if params[:search].blank?
+        @patients = current_user.patients.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      end
+    end
 
     respond_to do | f |
       f.html {
@@ -66,6 +72,12 @@ class PatientsController < ApplicationController
   def adminindex
     @page_title = "Patients Index"
     @patients = Patient.paginate(:page => params[:page], :per_page => 30)
+    if params[:search]
+      @patients = Patient.where(id: params[:search]).paginate(:page => params[:page], :per_page => 30)
+      if params[:search].blank?
+        @patients = Patient.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      end
+    end
     respond_to do | f |
       f.html {
       }

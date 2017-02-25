@@ -10,7 +10,13 @@
 
 <div class="container">
 
-<br />
+  <%= form_tag(hospitals_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
+  <% end %>
+  <br />
+
+</div>
 
   <div class="container">
     <div class="page-header">

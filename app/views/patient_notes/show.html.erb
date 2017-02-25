@@ -24,5 +24,7 @@
     <%= link_to @user.name, user_path(@user) %>
   </p>
 
-  <%= link_to "Return to Patient", patient_path(@patient) %>
+  <br />
+  
+  <%= button_to "Return to Patient", patient_path(@patient), method: 'get', :class => "btn btn-default" %>
 </div>
