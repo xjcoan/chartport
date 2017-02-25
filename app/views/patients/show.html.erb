@@ -45,8 +45,10 @@
   <div class="page-header">
     <h4>Patient Notes</h4>
   </div>
-  <button class="btn btn-default"><%= link_to "New Note", new_patient_note_path(:patient_id => @patient.id) %>
-  <i class="fa fa-plus"></i></button>
+  <% if @patient.user_id == @current_user.id %>
+    <button class="btn btn-default"><%= link_to "New Note", new_patient_note_path(:patient_id => @patient.id) %>
+      <i class="fa fa-plus"></i></button>
+    <% end %>
   <%= render "patient_notes/index" %>
 </div>
 
