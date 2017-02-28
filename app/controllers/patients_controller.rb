@@ -114,6 +114,7 @@ class PatientsController < ApplicationController
     @page_title = "Import Patient"
     @user = current_user
     @patient = Patient.find(params[:id])
+    @patient.touch
     @patient.transfer(@user)
   end
 

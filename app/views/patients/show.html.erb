@@ -30,7 +30,7 @@
       <div class="page-header">
         <h4>Patient Date of Birth:</h4>
       </div>
-      <p><%= @patient.date_of_birth %> (<%= @patient.find_age %> years old)</p>
+      <p><%= @patient.date_of_birth.to_date.strftime("%m/%d/%Y") %> (<%= @patient.find_age %> years old)</p>
     </div>
     <div class="col-sm-6">
       <div class="page-header">
