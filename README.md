@@ -13,6 +13,16 @@ It is currently being further revised and edited for the [GE Health Cloud Innova
 
 A page style guide (for front-end/view development) can be found [here](/app/views/readme.md).
 
+
+### Features
+* User Accounts - Support for both doctors and system administrators.
+* Patient Records - Patients "belong" to a doctor in the system, but can be transferred easily to other doctors.  Only the current doctor may edit patient information.
+* Patient Notes - Records entered by a doctor about the patient, appearing on the patient's record in ChartPort.
+* Prescriptions and Medications - Doctors can add prescriptions to patient records.
+* Hospitals - ChartPort includes support to show registered hospitals or other medical facilities.  Each page includes Google Maps Geolocation support.
+* Hospital Registrations - Doctor accounts can "register" to any hospital they practice at.  Registrations can be viewed from the Doctor's page.  A list of registrations per hospital can be seen at the hospital's record page.
+* Encryption - Data contained within ChartPort is encrypted.
+
 ### How to download/install for development
 Make sure you have RVM, Ruby, and Ruby Gems installed.
 
