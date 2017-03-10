@@ -30,6 +30,10 @@ class MedicationsController < ApplicationController
     @page_title = "Edit Perscription"
     if Medication.exists?(params[:id])
       @medication = Medication.find(params[:id])
+      @patient = Patient.find(@medication.patient_id)
+      if @patient.user_id != current_user.id
+        redirect_to medication_path(@medication)
+      end
     end
   end
 

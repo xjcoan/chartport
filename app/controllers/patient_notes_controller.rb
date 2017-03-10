@@ -27,6 +27,9 @@ class PatientNotesController < ApplicationController
       @patient_note = PatientNote.find(params[:id])
       @patient = Patient.find(@patient_note.patient_id)
       @user = current_user
+      if @patient_note.user_id != @user.id
+        redirect_to patient_path(@patient)
+      end 
     end
   end
 

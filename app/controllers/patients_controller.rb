@@ -21,6 +21,9 @@ class PatientsController < ApplicationController
     @page_title = "Edit Patient"
     if Patient.exists?(params[:id])
       @patient = Patient.find(params[:id])
+      if @patient.user_id != current_user.id
+        redirect_to patient_path(@patient)
+      end
     end
   end
 
