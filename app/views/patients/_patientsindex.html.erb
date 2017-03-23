@@ -14,7 +14,9 @@
 
     <% end %>
 
-    <%= will_paginate @patients %>
+    <div class="digg_pagination">
+      <%= will_paginate @patients %>
+    </div>
 
   <% else %>
     <p>No Recent Patients</p>

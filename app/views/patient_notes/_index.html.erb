@@ -31,7 +31,11 @@
       <% end %>
     </div>
   <% end %>
-  <%= will_paginate @patient_notes %>
+
+  <div class="digg_pagination">
+    <%= will_paginate @patient_notes %>
+  </div>
+
 <% else %>
   <h5><%= @patient.name %> Currently has no associated notes.</h5>
 <% end %>
