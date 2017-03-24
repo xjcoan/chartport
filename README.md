@@ -1,6 +1,6 @@
-#xcoan/ChartPortMD
 
-ChartPort MD
+
+# ChartPort MD
 
 ### What is it?
 In short, ChartPort MD exists as a cloud-based service for healthcare professionals to have easy access to patient records.
