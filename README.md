@@ -13,6 +13,8 @@ It is currently being further revised and edited for the [GE Health Cloud Innova
 
 A page style guide (for front-end/view development) can be found [here](/app/views/readme.md).
 
+Development uses postgresql as it's database, so be sure you have postgres installed locally when setting up an environment.
+
 
 ### Features
 * User Accounts - Support for both doctors and system administrators.
@@ -34,8 +36,10 @@ Migrate the database: `bundle exec rake db:migrate`.
 Finally, to run over localhost, run `rails server`.
 
 
-#### Is there a license?
-Not yet. A license will be added upon completion/project submission to the Health Cloud Challenge (see above).
+#### Deployment information
+ChartPort's production environment is deployed to AWS with an RDS mysql database.
+
+The staging and testing environment is deployed to [heroku](https://chartport-staging.herokuapp.com/) with postgres.
 
 
 #### Developers
