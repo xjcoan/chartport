@@ -1,17 +1,11 @@
+<h1 align="center">ChartPort</h1>
+<p align="center"><b>A cloud-based medical record management system built for healthcare professionals </b></p>
+<hr>
+<p align="center"> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/483/355/datas/gallery.jpg" /> </p>
 
-
-# ChartPort MD
-
-### What is it?
-In short, ChartPort MD exists as a cloud-based service for healthcare professionals to have easy access to patient records.
-
-Planned features include the ability for records to easily be transferred between healthcare facilities, records being exported for internal user, and the ability to prescribe mediations to patients and send those prescriptions to a chosen pharmacy.
-
-### Development
+### Development History
 This project was originally created at [ArchHacks](http://archhacks.io/) in November 2016.
 It is currently being further revised and edited for the [GE Health Cloud Innovation Challenge](http://gehealthcloud.devpost.com).
-
-A page style guide (for front-end/view development) can be found [here](/app/views/readme.md).
 
 Development uses postgresql as it's database, so be sure you have postgres installed locally when setting up an environment.
 
@@ -27,6 +21,7 @@ Development uses postgresql as it's database, so be sure you have postgres insta
 
 ### How to download/install for development
 Make sure you have RVM, Ruby, and Ruby Gems installed.
+You will also need postgres installed.
 
 Git clone the app, cd into the directory, then run `bundle`.
 
@@ -34,12 +29,17 @@ Next, set up the database: `bundle exec rake db:create`.
 Migrate the database: `bundle exec rake db:migrate`.
 
 Finally, to run over localhost, run `rails server`.
+Navigate to `localhost:3000` to see the app in your browser.
+
+
+### Contributing
+Create a new branch with your features/updates and create a pull request on Github.
+
+A page style guide (for front-end/view development) can be found [here](/app/views/readme.md).
 
 
 #### Deployment information
 ChartPort's production environment is deployed to AWS with an RDS mysql database.
-
-The staging and testing environment is deployed to [heroku](https://chartport-staging.herokuapp.com/) with postgres.
 
 
 #### Developers
