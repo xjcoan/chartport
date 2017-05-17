@@ -39,7 +39,7 @@ A page style guide (for front-end/view development) can be found [here](/app/vie
 
 
 #### Deployment information
-ChartPort's production environment is deployed to AWS with an RDS mysql database.
+ChartPort's production environment was previously deployed to AWS with an RDS mysql database.
 
 
 #### Developers
