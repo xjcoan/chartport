@@ -9,7 +9,6 @@ class PatientsController < ApplicationController
 
   def create
     @patient = current_user.patients.new(patient_params)
-
     if @patient.save
       redirect_to patient_path(@patient)
     else
@@ -20,7 +19,7 @@ class PatientsController < ApplicationController
   def edit
     @page_title = "Edit Patient"
     if Patient.exists?(params[:id])
-      @patient = Patient.find(params[:id])
+      @patient = current_user.patients.find(params[:id])
       if @patient.user_id != current_user.id
         redirect_to patient_path(@patient)
       end
@@ -28,7 +27,7 @@ class PatientsController < ApplicationController
   end
 
   def update
-    @patient = Patient.find(params[:id])
+    @patient = current_user.patients.find(params[:id])
     if @patient.update(patient_params)
       redirect_to patient_path(@patient)
     else
@@ -37,7 +36,7 @@ class PatientsController < ApplicationController
   end
 
   def show
-    @patient = Patient.find(params[:id])
+    @patient = current_user.patients.find(params[:id])
     @page_title = @patient.name + " record"
     @patient_notes = @patient.patient_notes.paginate(:page => params[:page], :per_page => 15)
     @medications = @patient.medications.paginate(:page => params[:page], :per_page => 10)
@@ -92,14 +91,14 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    @patient = Patient.find(params[:id])
+    @patient = current_user.patients.find(params[:id])
     @patient.destroy
 
     redirect_to dashboard_path
   end
 
   def medicationindex
-    @patient = Patient.find(params[:id])
+    @patient = current_user.patient.find(params[:id])
     @medications = @patient.medications
   end
 
