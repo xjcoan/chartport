@@ -7,8 +7,7 @@
 This project was originally created at [ArchHacks](http://archhacks.io/) in November 2016.
 It is currently being further revised and edited for the [GE Health Cloud Innovation Challenge](http://gehealthcloud.devpost.com).
 
-Development uses postgresql as it's database, so be sure you have postgres installed locally when setting up an environment.
-
+ChartPort is no longer in active development.
 
 ### Features
 * User Accounts - Support for both doctors and system administrators.
@@ -31,16 +30,20 @@ Migrate the database: `bundle exec rake db:migrate`.
 Finally, to run over localhost, run `rails server`.
 Navigate to `localhost:3000` to see the app in your browser.
 
-
 ### Contributing
 Create a new branch with your features/updates and create a pull request on Github.
 
 A page style guide (for front-end/view development) can be found [here](/app/views/readme.md).
 
-
-#### Deployment information
+### Deployment information
 ChartPort's production environment was previously deployed to AWS with an RDS mysql database.
+It is currently hosted on Heroku for demo purposes.
 
+### Browser Support
+ChartPort should be _should_ be able to run on all browsers from IE9 and higher.
+
+#### Future Development
+There are currently no plans to develop ChartPort any further beyond upgrading dependencies for "fun".
 
 #### Developers
 X Coan [[Github](http://github.com/xcoan)]
