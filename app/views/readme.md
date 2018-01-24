@@ -1,4 +1,4 @@
-#Style Guide
+# Style Guide
 Currently, [ChartPort MD](http://github.com/xcoan/ChartPort MD) makes extensive use of [Bootstrap](http://http://getbootstrap.com/).
 
 These are just some guidelines to make ChartPort MD pages look standardized.
