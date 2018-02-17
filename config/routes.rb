@@ -27,5 +27,7 @@ Rails.application.routes.draw do
 
   get 'patientindex' => 'patients#adminindex'
 
+  get 'autherror' => 'pages#auth_error'
+
   get ':invalid' => 'pages#errorpage'
 end
