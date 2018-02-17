@@ -48,3 +48,18 @@ body {
   height: 50vh;
   position: relative;
 }
+
+.navbar-inverse {
+  .navbar-brand {
+    color: white!important;
+  }
+  .navbar-nav li a {
+    color: white!important;
+  }
+  a:hover {
+    color: grey!important;
+  }
+  .dropdown-menu li a{
+    color: black!important;
+  }
+}

@@ -45,8 +45,8 @@ gem 'gon', '~> 6.0', '>= 6.0.1'
 
 # Pry for debugging
 gem 'pry'
-gem 'pry-rails'
 gem 'pry-awesome_print'
+gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

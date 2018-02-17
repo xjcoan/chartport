@@ -22,7 +22,7 @@
 
   <% @users.each do |user| %>
 
-  <div class="hovertip"><%= link_to user.name, user %><% if user.id == current_user.id %><small>(You)</small><% end %>
+  <div class="hovertip"><%= link_to user.name, user %><% if user.id == current_user.id %><small> (You)</small><% end %>
     <span class="hovertiptext"><%= user.name %><br />
       Email: <%= user.email %>
       <% if user.admin %><br /><small>admin</small><% end %>

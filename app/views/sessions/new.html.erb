@@ -4,7 +4,6 @@
   </div>
 </div>
 
-
 <%= form_for(:session, url: login_path) do |f| %>
   <div class="container">
     <p>
@@ -15,6 +14,11 @@
     <p>
       <%= f.label :password %><br />
       <%= f.password_field :password, :placeholder => "Password" %><br />
+    </p>
+
+    <p>
+      <%= f.label 'Keep Me Signed In' %>
+      <%= f.check_box :persist %>
     </p>
 
     <%= button_tag(type: 'submit', class: "btn btn-default") do %>
