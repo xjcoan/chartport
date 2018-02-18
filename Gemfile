@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # postgresql for dev/test
-gem 'pg'
+gem 'pg', '~> 0.21.0'
 # mysql for RDS
 gem 'mysql2'
 # Use Puma as the app server
@@ -46,6 +45,7 @@ gem 'gon', '~> 6.0', '>= 6.0.1'
 # Pry for debugging
 gem 'pry'
 gem 'pry-awesome_print'
+gem 'pry-byebug'
 gem 'pry-rails'
 
 group :development, :test do

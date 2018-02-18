@@ -8,6 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       if params[:session][:persist] == '1'
+        if @user.auth_token.nil?
+          @user.auth_token = SecureRandom.urlsafe_base64
+          @user.save(validate: false)
+        end
         cookies.permanent[:chartport_auth_token] = @user.auth_token
       end
       session[:user_id] = @user.id
