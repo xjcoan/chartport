@@ -1,4 +1,4 @@
-<%= form_for @patient_note do |f| %>
+<%= form_for @patient_note, url: user_patient_patient_notes_path(current_user, @patient) do |f| %>
 
 <div class="container">
   <div class="jumbotron">

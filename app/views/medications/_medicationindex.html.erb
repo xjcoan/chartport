@@ -4,7 +4,7 @@
 
   <% @medications.reverse_each do |medication| %>
 
-  <div class="hovertip"><%= link_to medication.name, medication %>
+  <div class="hovertip"><%= link_to medication.name, user_patient_medication_path(@patient.user_id, @patient, medication) %>
     <span class="hovertiptext"><%= medication.name %><br />
       Dosage: <%= medication.dosage %> <br />
       Refills: <%= medication.refills %>

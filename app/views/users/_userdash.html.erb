@@ -2,17 +2,17 @@
   <div class="jumbotron">
     <h1><%= current_user.name %>'s Dashboard</h1>
     <hr />
-    <p><%= link_to 'Your Profile', current_user %></ps>
+    <p><%= link_to 'Your Profile', user_path(current_user) %></ps>
   </div>
 
   <div class="page-header">
     <h1>Recent Patients (Last 24 Hours)</h1>
   </div>
   <div class="col-md-6">
-    <button class="btn btn-default"><%= link_to "New Patient", new_patient_path %> <span class="glyphicon glyphicon-pencil"></button>
+    <button class="btn btn-default"><%= link_to "New Patient", new_user_patient_path(current_user) %> <span class="glyphicon glyphicon-pencil"></button>
   </div>
   <div class="col-md-6">
-    <button class="btn btn-default"><%= link_to "Search My Database", patients_path %> <span class="glyphicon glyphicon-list"></span></button>
+    <button class="btn btn-default"><%= link_to "Search My Database", user_patients_path(current_user) %> <span class="glyphicon glyphicon-list"></span></button>
   </div>
   <br />
   <%= render "patients/patientsindex" %>

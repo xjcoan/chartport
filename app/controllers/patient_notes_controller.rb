@@ -15,7 +15,7 @@ class PatientNotesController < ApplicationController
     @patient_note = @patient.patient_notes.new(patient_note_params)
     if @patient_note.save
       @patient.touch
-      redirect_to patient_path(@patient)
+      redirect_to user_patient_path(current_user, @patient)
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class PatientNotesController < ApplicationController
       @user = current_user
       if @patient_note.user_id != @user.id
         redirect_to patient_path(@patient)
-      end 
+      end
     end
   end
 

@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1>New Patient Entry Form</h1>
   </div>
-  <%= form_for @patient do |f| %>
+  <%= form_for @patient, url: user_patients_path(current_user) do |f| %>
 
 
   <% if @patient.errors.any? %>

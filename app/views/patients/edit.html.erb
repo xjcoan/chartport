@@ -1,4 +1,4 @@
-<%= form_for :patient, url: patient_path(@patient), method: :patch do |f| %>
+<%= form_for :patient, url: user_patient_path(current_user, @patient), method: :patch do |f| %>
 
 <div class="container">
   <div class="jumbotron">

@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
   def create
     @patient = current_user.patients.new(patient_params)
     if @patient.save
-      redirect_to patient_path(@patient)
+      redirect_to user_patient_path(current_user, @patient)
     else
       render 'new'
     end
@@ -21,7 +21,7 @@ class PatientsController < ApplicationController
     if Patient.exists?(params[:id])
       @patient = current_user.patients.find(params[:id])
       if @patient.user_id != current_user.id
-        redirect_to patient_path(@patient)
+        redirect_to user_patient_path(@patient.user, @patient)
       end
     end
   end
@@ -29,7 +29,7 @@ class PatientsController < ApplicationController
   def update
     @patient = current_user.patients.find(params[:id])
     if @patient.update(patient_params)
-      redirect_to patient_path(@patient)
+      redirect_to user_patient_path(@patient.user, @patient)
     else
       render 'edit'
     end

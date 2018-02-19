@@ -12,7 +12,7 @@ class MedicationsController < ApplicationController
     @page_title = "Add Medication for #{@patient.name}"
     @medication = @patient.medications.new(medication_params)
     if @medication.save
-      redirect_to patient_path(@patient)
+      redirect_to user_patient_path(current_user, @patient)
       @patient = Patient.find(@medication.patient_id)
       @patient.touch
     else

@@ -20,7 +20,7 @@
 </div>
 
 <div class="container">
-  <%= form_for @medication do |f| %>
+  <%= form_for @medication, url: user_patient_medications_path(current_user, @patient) do |f| %>
   <p>
     <%= f.label "Name" %><br />
     <%= f.text_field :name, :class => 'textfield' %>

@@ -12,7 +12,7 @@
     </p>
     <% end %>
     <% if @patient.user_id == current_user.id %>
-    <%= button_to "Edit Patient", edit_patient_path(@patient), method: 'get', :class => "btn btn-default" %>
+    <%= button_to "Edit Patient", edit_user_patient_path(current_user, @patient), method: 'get', :class => "btn btn-default" %>
     <% end %>
     <% if current_user.admin %>
       <button class="btn btn-default"><%= link_to 'Export JSON', controller: 'patients', action: 'show', format: 'json' %></button>
@@ -46,7 +46,7 @@
     <h4>Patient Notes</h4>
   </div>
   <% if @patient.user_id == @current_user.id %>
-    <button class="btn btn-default"><%= link_to "New Note", new_patient_note_path(:patient_id => @patient.id) %>
+    <button class="btn btn-default"><%= link_to "New Note", new_user_patient_patient_note_path(current_user, @patient) %>
       <i class="fa fa-plus"></i></button>
     <% end %>
   <%= render "patient_notes/index" %>
@@ -58,7 +58,7 @@
     <h4>Medications</h4>
   </div>
   <% if @patient.user_id == @current_user.id && !current_user.admin %>
-  <button class="btn-default"><%= link_to "Add Prescription", new_medication_path(:patient_id => @patient.id) %>
+  <button class="btn-default"><%= link_to "Add Prescription", new_user_patient_medication_path(current_user, @patient) %>
   <i class="fa fa-medkit"></i></button>
   <% end %>
   <% if @patient.medications.any? %>

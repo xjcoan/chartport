@@ -3,7 +3,7 @@
   <% if @patients.where(updated_at: (Time.now - 24.hours)..Time.now).any? %>
 
     <% @patients.where(updated_at: (Time.now - 24.hours)..Time.now).each do |patient| %>
-    <div class="hovertip"><%= link_to patient.name, patient %>
+    <div class="hovertip"><%= link_to patient.name, user_patient_path(current_user, patient) %>
       <span class="hovertiptext"><%= patient.name %><br />
         Physician: <%= User.find(patient.user_id).name %><br />
         Age: <%= patient.find_age %> <br />

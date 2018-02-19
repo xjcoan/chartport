@@ -7,12 +7,12 @@
 <% if @patients.any? %>
 
 <div class="container">
-  <%= form_tag(patients_path, :method => "get", id: "search-form") do %>
+  <%= form_tag(user_patients_path(current_user), :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Patients" %>
       <%= submit_tag "Search", :name => nil, :class => "btn btn-default"%>
   <% end %>
 
-  <%= button_to "New Patient Entry", new_patient_path, method: 'get', :class => "btn btn-default" %>
+  <%= button_to "New Patient Entry", new_user_patient_path, method: 'get', :class => "btn btn-default" %>
 </div>
 
 <br />
@@ -25,7 +25,7 @@
 
   <% @patients.each do |patient| %>
 
-  <div class="hovertip"><%= link_to patient.name, patient %>
+  <div class="hovertip"><%= link_to patient.name, user_patient_path(current_user, patient) %>
     <span class="hovertiptext"><%= patient.name %><br />
       Physician: <%= User.find(patient.user_id).name %><br />
       Age: <%= patient.find_age %> <br />
