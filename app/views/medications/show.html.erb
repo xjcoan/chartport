@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1><%= @patient.name %>'s <%= @medication.name %> Perscription</h1>
     <hr />
-    <%= button_to "Return to Patient", patient_path(@patient), method: :get, :class => "btn btn-default" %>
+    <%= button_to "Return to Patient", user_patient_path(@patient.user, @patient), method: :get, :class => "btn btn-default" %>
   </div>
 
   <div class="page-header">

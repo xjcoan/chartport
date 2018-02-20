@@ -36,7 +36,8 @@ class PatientsController < ApplicationController
   end
 
   def show
-    @patient = current_user.patients.find(params[:id])
+    user = User.find(params[:user_id])
+    @patient = user.patients.find(params[:id])
     @page_title = @patient.name + " record"
     @patient_notes = @patient.patient_notes.paginate(:page => params[:page], :per_page => 15)
     @medications = @patient.medications.paginate(:page => params[:page], :per_page => 10)

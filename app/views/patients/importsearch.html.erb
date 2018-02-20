@@ -24,7 +24,7 @@
     <% @patients.each do |patient| %>
 
       <p>
-        <%= link_to patient.name, patient %>    <br />
+        <%= link_to patient.name, user_patient_path(patient.user, patient) %>    <br />
           <small><%= User.find(patient.user_id).name %></small>
       </p>
     </div>
@@ -53,7 +53,7 @@
     <% @patients.each do |patient| %>
 
       <p>
-        <%= link_to patient.name, patient %>    <br />
+        <%= link_to patient.name, user_patient_path(patient.user, patient) %>    <br />
           <small><%= User.find(patient.user_id).name %></small>
       </p>
     </div>
