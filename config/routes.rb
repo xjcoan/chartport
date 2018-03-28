@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Change /users/ to /doctors/
   resources :users, path: 'doctors' do
     resources :patients do
       resources :patient_notes, :medications

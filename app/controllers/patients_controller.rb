@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :require_user
 
   def new
-    @page_title = "Add Patient Record"
+    @page_title = 'Add Patient Record'
     @patient = Patient.new
     @user = current_user
   end
@@ -17,7 +17,7 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @page_title = "Edit Patient"
+    @page_title = 'Edit Patient'
     if Patient.exists?(params[:id])
       @patient = current_user.patients.find(params[:id])
       if @patient.user_id != current_user.id
@@ -53,7 +53,7 @@ class PatientsController < ApplicationController
   end
 
   def index
-    @page_title = "Patients Index"
+    @page_title = 'Patients Index'
     @patients = current_user.patients.paginate(:page => params[:page], :per_page => 10)
     if params[:search]
       @patients = current_user.patients.where(id: params[:search]).paginate(:page => params[:page], :per_page => 30)
@@ -61,8 +61,7 @@ class PatientsController < ApplicationController
         @patients = current_user.patients.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
       end
     end
-
-    respond_to do | f |
+    respond_to do |f|
       f.html {
       }
 
@@ -72,8 +71,9 @@ class PatientsController < ApplicationController
     end
   end
 
+  # Show all patients
   def adminindex
-    @page_title = "Patients Index"
+    @page_title = 'Patients Index'
     @patients = Patient.paginate(:page => params[:page], :per_page => 30)
     if params[:search]
       @patients = Patient.where(id: params[:search]).paginate(:page => params[:page], :per_page => 30)
@@ -81,7 +81,7 @@ class PatientsController < ApplicationController
         @patients = Patient.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
       end
     end
-    respond_to do | f |
+    respond_to do |f|
       f.html {
       }
 
@@ -114,7 +114,7 @@ class PatientsController < ApplicationController
   end
 
   def importpatient
-    @page_title = "Import Patient"
+    @page_title = 'Import Patient'
     @user = current_user
     @patient = Patient.find(params[:id])
     @patient.touch

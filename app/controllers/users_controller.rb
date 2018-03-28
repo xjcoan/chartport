@@ -57,8 +57,9 @@ class UsersController < ApplicationController
     end
   end
 
+  # User's custom dashboard
   def dashboard
-    @page_title = "Dashboard"
+    @page_title = 'Dashboard'
     @patients = current_user.patients.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -68,19 +69,18 @@ class UsersController < ApplicationController
       @page_title = @user.name
       @doctorlists = @user.doctorlists
     else
-      redirect_to "/"
+      redirect_to root_path
     end
-
-    respond_to do | f |
+    respond_to do |f|
       f.html {
       }
-
       f.any(:xml, :json) {
         render request.format.to_sym => @user
       }
     end
   end
 
+  # Register new admin user (admin: true)
   def newadmin
     @page_title = 'Register Admin'
     @user = User.new

@@ -8,8 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       if params[:session][:persist] == '1'
+        # Generate auth token for user account if no token present
         if @user.auth_token.nil?
           @user.auth_token = SecureRandom.urlsafe_base64
+          # Allows account to be updated w/o validating fields from user.rb model
           @user.save(validate: false)
         end
         cookies.permanent[:chartport_auth_token] = @user.auth_token
