@@ -22,14 +22,14 @@
 
   <% @patients.each do |patient| %>
 
-  <div class="hovertip"><%= link_to patient.name, patient %>
-    <span class="hovertiptext"><%= patient.name %><br />
-      Physician: <%= User.find(patient.user_id).name %><br />
-      Age: <%= patient.find_age %> <br />
-      Phone: <%= number_to_phone(patient.phone_number, area_code: true) %>
-     </span>
-  </div>
-  <br />
+    <div class="hovertip"><%= link_to patient.name, user_patients_path(patient) %>
+      <span class="hovertiptext"><%= patient.name %><br />
+        Physician: <%= patient.user.name %><br />
+        Age: <%= patient.find_age %> <br />
+        Phone: <%= number_to_phone(patient.phone_number, area_code: true) %>
+       </span>
+    </div>
+    <br />
 
   <% end %>
 

@@ -23,21 +23,30 @@
     <%= f.text_field :name, :class => 'textfield' %>
   </p>
 
-  <div class="page-header">
-    <h3><%= f.label "Date of Birth" %></h3>
-  </div>
-  <p>
-    <%= f.date_field :date_of_birth, :class => 'textfield', value: Time.now.strftime("%m/%d/%Y") %>
-  </p>
+  <div class="container-fluid">
 
-  <div class="page-header">
-    <h3><%= f.label "Phone Number" %></h3>
+    <div class="col-sm-6">
+      <div class="page-header">
+        <h3><%= f.label "Date of Birth" %></h3>
+      </div>
+      <p>
+        <%= f.date_field :date_of_birth, :class => 'textfield', value: Time.now.strftime("%m/%d/%Y") %>
+      </p>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="page-header">
+        <h3><%= f.label "Phone Number" %></h3>
+      </div>
+      <p>
+        <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone('1112223333', area_code: true) %>
+      </p>
+    </div>
+
   </div>
-  <p>
-    <%= f.telephone_field :phone_number, :class => 'textfield', value: number_to_phone('2221112222', area_code: true) %>
-  </p>
 
   <%= f.text_area :primary_care_physician, value: @user.id, style: "display: none;"  %>
+  <br>
   <%= f.submit "Submit Patient" %>
 
   <% end %>
